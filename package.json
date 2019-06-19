@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "postcss _styles.css -o styles.css"
+  },
+  "devDependencies": {
+    "postcss-cli": "^6.1.2",
+    "postcss-font-magician": "^2.2.2",
+    "tailwindcss": "^1.0.4"
+  }
+}
