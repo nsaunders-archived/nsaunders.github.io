@@ -3,6 +3,7 @@
     "build": "postcss _styles.css -o styles.css"
   },
   "devDependencies": {
+    "cssnano": "^4.1.10",
     "postcss-cli": "^6.1.2",
     "postcss-font-magician": "^2.2.2",
     "tailwindcss": "^1.0.4"
