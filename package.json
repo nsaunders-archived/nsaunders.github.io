@@ -1,5 +1,5 @@
 {
-  "name": "nsaunders.dev",
+  "name": "nsaunders.github.io",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,9 +14,17 @@
     "@types/react-dom": "18.2.6",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
+    "gray-matter": "^4.0.3",
+    "io-ts": "^2.2.20",
+    "io-ts-promise": "^2.0.2",
+    "io-ts-types": "^0.5.19",
     "next": "13.4.7",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "react-markdown": "^8.0.7",
+    "remark-remove-comments": "^1.0.1",
+    "typescript": "5.1.6",
+    "ufo": "^1.1.2"
   }
 }
