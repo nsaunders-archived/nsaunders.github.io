@@ -24,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.7",
     "remark-remove-comments": "^1.0.1",
+    "ts-toolbelt": "^9.6.0",
     "typescript": "5.1.6",
     "ufo": "^1.1.2"
   }
