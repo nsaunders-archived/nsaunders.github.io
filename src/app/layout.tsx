@@ -22,8 +22,9 @@ export default function RootLayout({
       <body
         className={lato.className}
         style={{
+          "--background": "var(--black)",
           margin: 0,
-          background: "var(--black)",
+          background: "var(--background)",
           color: "var(--white)",
           display: "flex",
           flexDirection: "column",

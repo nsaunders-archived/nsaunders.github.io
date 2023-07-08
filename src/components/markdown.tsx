@@ -2,7 +2,13 @@ import { ComponentProps } from "react";
 import cx from "clsx";
 import ReactMarkdown from "react-markdown";
 import remarkRemoveComments from "remark-remove-comments";
-import { Code, Heading as HeadingImpl, Paragraph, Wrapper } from "./html";
+import {
+  Anchor,
+  Code,
+  Heading as HeadingImpl,
+  Paragraph,
+  Wrapper,
+} from "./html";
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-markup";
@@ -31,6 +37,7 @@ const Heading: Exclude<
 };
 
 const defaultComponents: ComponentProps<typeof ReactMarkdown>["components"] = {
+  a: (props) => <Anchor {...props} />,
   code: ({ children, className, inline, node, ...restProps }) => {
     const match = /language-(\w+)/.exec(className || "");
     if (inline || !match || match.length < 2) {

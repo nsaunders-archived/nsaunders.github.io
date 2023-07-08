@@ -8,6 +8,7 @@ import { O, U } from "ts-toolbelt";
 import { isComponent } from "@/utils/react";
 import { Inconsolata } from "next/font/google";
 import cx from "clsx";
+export * from "./client";
 
 export type WrapperForwardProps = {
   style?: CSSProperties;
