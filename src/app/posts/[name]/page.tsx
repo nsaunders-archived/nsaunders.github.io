@@ -1,7 +1,7 @@
 import Markdown from "@/components/markdown";
 import { resolveURL } from "ufo";
 import * as Post from "@/data/Post";
-import { Heading } from "@/components/prose";
+import { Heading } from "@/components/html";
 
 type Props = {
   params: {

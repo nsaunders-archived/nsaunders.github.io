@@ -2,7 +2,7 @@ import { ComponentProps } from "react";
 import cx from "clsx";
 import ReactMarkdown from "react-markdown";
 import remarkRemoveComments from "remark-remove-comments";
-import { Code, Heading as HeadingImpl, Paragraph, Wrapper } from "./prose";
+import { Code, Heading as HeadingImpl, Paragraph, Wrapper } from "./html";
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-markup";
