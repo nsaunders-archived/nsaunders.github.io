@@ -32,12 +32,13 @@ export const Anchor = forwardRef<HTMLAnchorElement, O.Omit<AnchorProps, "ref">>(
       onMouseEnter,
       onMouseLeave,
       style: {
+        textDecoration: hover && !focus ? "underline" : "none",
         outlineColor: "transparent",
         outlineWidth: 2,
         outlineStyle: "dotted",
         color: hover ? "var(--blue-300)" : "var(--blue-400)",
         boxShadow: focus
-          ? "0 0 0 2px var(--background), 0 0 0 4px var(--blue-400)"
+          ? "0 0 0 2px var(--background), 0 0 0 4px var(--blue-500)"
           : undefined,
         borderRadius: 2,
         ...restProps.style,
