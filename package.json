@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/node": "20.3.3",
+    "@types/prismjs": "^1.26.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "clsx": "^1.2.1",
@@ -21,6 +22,8 @@
     "io-ts-types": "^0.5.19",
     "next": "13.4.7",
     "next-themes": "^0.2.1",
+    "prism-theme-vars": "^0.2.4",
+    "prismjs": "^1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.7",

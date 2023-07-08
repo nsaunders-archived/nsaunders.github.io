@@ -1,7 +1,13 @@
 import { ComponentProps } from "react";
+import cx from "clsx";
 import ReactMarkdown from "react-markdown";
 import remarkRemoveComments from "remark-remove-comments";
 import { Code, Heading as HeadingImpl, Paragraph, Wrapper } from "./prose";
+import Prism from "prismjs";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-markup";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-tsx";
 
 const Heading: Exclude<
   ComponentProps<typeof ReactMarkdown>["components"],
@@ -25,9 +31,29 @@ const Heading: Exclude<
 };
 
 const defaultComponents: ComponentProps<typeof ReactMarkdown>["components"] = {
-  code: ({ children, inline, node, ...restProps }) => (
-    <Code {...restProps}>{children}</Code>
-  ),
+  code: ({ children, className, inline, node, ...restProps }) => {
+    const match = /language-(\w+)/.exec(className || "");
+    if (inline || !match || match.length < 2) {
+      return <Code {...restProps}>{children}</Code>;
+    }
+    return (
+      <Code>
+        {({ className: codeClassName, ...restProps }) => (
+          <div
+            {...restProps}
+            className={cx(className, codeClassName)}
+            dangerouslySetInnerHTML={{
+              __html: Prism.highlight(
+                String(children),
+                Prism.languages[match[1]],
+                match[1]
+              ),
+            }}
+          />
+        )}
+      </Code>
+    );
+  },
   h1: Heading,
   h2: Heading,
   h3: Heading,

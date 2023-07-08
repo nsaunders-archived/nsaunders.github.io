@@ -23,8 +23,8 @@ export default function RootLayout({
         className={lato.className}
         style={{
           margin: 0,
-          background: "var(--background)",
-          color: "var(--foreground)",
+          background: "var(--black)",
+          color: "var(--white)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
