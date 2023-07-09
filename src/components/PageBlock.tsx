@@ -21,7 +21,7 @@ export const PageBlock = forwardRef<
   const forwardProps: PageBlockForwardProps = {
     style: {
       margin: "0 auto",
-      width: "calc(100vw - var(--margin-x) * 2)",
+      width: "calc(100vw - (var(--desktop) * 64px + var(--mobile) * 32px) * 2)",
       maxWidth: 832,
       boxSizing: "border-box",
       ...style,

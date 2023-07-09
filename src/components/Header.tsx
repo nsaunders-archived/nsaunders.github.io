@@ -26,7 +26,25 @@ export default function Header() {
           whiteSpace: "nowrap",
         }}
       >
-        Nick Saunders
+        <span
+          style={{
+            display: "inline-block",
+            maxWidth: "calc(999px * var(--mobile))",
+            overflow: "hidden",
+          }}
+          aria-hidden="true"
+        >
+          NS
+        </span>
+        <span
+          style={{
+            display: "inline-block",
+            maxWidth: "calc(999px * var(--desktop))",
+            overflow: "hidden",
+          }}
+        >
+          Nick Saunders
+        </span>
       </h1>
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
         <NavLinks />
