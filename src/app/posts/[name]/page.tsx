@@ -1,9 +1,7 @@
 import * as Post from "@/data/Post";
 import { resolveURL } from "ufo";
 import Markdown from "@/components/Markdown";
-import Heading from "@/components/Heading";
-import { PageBlock } from "@/components/PageBlock";
-import { ifExhausted } from "@/utils/ifExhausted";
+import Article from "@/components/Article";
 
 type Props = {
   params: {
@@ -15,30 +13,7 @@ export default async function Page({ params: { name } }: Props) {
   const post = await Post.getByName(name);
   return (
     <main>
-      <div style={{ background: "var(--gray-800)" }}>
-        <Heading level={1}>
-          {({ style, ...restProps }) =>
-            ifExhausted(
-              restProps,
-              <PageBlock
-                style={{
-                  ...style,
-                  marginBlockStart: 0,
-                  marginBlockEnd: 0,
-                  padding: "2em 0",
-                }}
-              >
-                <h1
-                  style={{ marginInline: 0, marginBlock: 0, font: "inherit" }}
-                >
-                  {post.data.title}
-                </h1>
-              </PageBlock>
-            )
-          }
-        </Heading>
-      </div>
-      <PageBlock>
+      <Article intro={<h1 style={{ all: "unset" }}>{post.data.title}</h1>}>
         <Markdown
           components={{
             img: ({ alt, src, style, ...restProps }) =>
@@ -60,7 +35,7 @@ export default async function Page({ params: { name } }: Props) {
         >
           {post.content}
         </Markdown>
-      </PageBlock>
+      </Article>
     </main>
   );
 }
