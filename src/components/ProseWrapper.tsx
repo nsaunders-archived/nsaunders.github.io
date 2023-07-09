@@ -16,6 +16,7 @@ export default forwardRef<HTMLDivElement, O.Omit<Props, "ref">>(
     const forwardProps: ForwardProps = {
       style: {
         lineHeight: 1.5,
+        padding: 0.02,
         ...style,
       },
     };
