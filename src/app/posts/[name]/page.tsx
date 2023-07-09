@@ -1,9 +1,9 @@
-import Markdown from "@/components/markdown";
-import { resolveURL } from "ufo";
 import * as Post from "@/data/Post";
-import { Heading } from "@/components/html";
+import { resolveURL } from "ufo";
+import Markdown from "@/components/Markdown";
+import Heading from "@/components/Heading";
 import { PageBlock } from "@/components/PageBlock";
-import { ifExhausted } from "@/utils/isExhausted";
+import { ifExhausted } from "@/utils/ifExhausted";
 
 type Props = {
   params: {

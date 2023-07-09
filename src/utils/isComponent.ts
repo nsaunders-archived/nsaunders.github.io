@@ -1,6 +1,7 @@
-import { ComponentType, ReactNode, isValidElement } from "react";
+import type { ComponentType, ReactNode } from "react";
+import { isValidElement } from "react";
 
-export function isComponent<P>(
+export default function isComponent<P>(
   x: ComponentType<P> | ReactNode
 ): x is ComponentType<P> {
   return (
@@ -9,6 +10,6 @@ export function isComponent<P>(
   );
 }
 
-function isIterable(x: any): x is Iterable<unknown> {
+function isIterable(x: unknown): x is Iterable<unknown> {
   return Symbol.iterator in x;
 }

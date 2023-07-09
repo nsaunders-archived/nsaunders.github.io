@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "@/components/icons";
+import MoonIcon from "./MoonIcon";
+import SunIcon from "./SunIcon";
 import useFocus from "@/hooks/useFocus";
 
 export default function ThemeSwitcher() {
@@ -30,7 +31,7 @@ export default function ThemeSwitcher() {
           : undefined,
       }}
     >
-      <Moon />
+      <MoonIcon />
       <input
         type="checkbox"
         checked={theme === "light"}
@@ -41,7 +42,7 @@ export default function ThemeSwitcher() {
         onFocus={onFocus}
         onBlur={onBlur}
       />
-      <Sun />
+      <SunIcon />
       <div
         style={{
           position: "absolute",

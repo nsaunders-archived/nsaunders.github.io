@@ -1,11 +1,7 @@
-import { isComponent } from "@/utils/react";
-import {
-  ComponentProps,
-  ComponentType,
-  CSSProperties,
-  forwardRef,
-} from "react";
-import { O, U } from "ts-toolbelt";
+import type { CSSProperties, ComponentProps, ComponentType } from "react";
+import type { O, U } from "ts-toolbelt";
+import { forwardRef } from "react";
+import isComponent from "@/utils/isComponent";
 
 export type PageBlockForwardProps = { style?: CSSProperties };
 

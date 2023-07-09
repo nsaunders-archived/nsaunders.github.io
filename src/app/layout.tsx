@@ -2,7 +2,7 @@ import "./globals.css";
 
 import { Lato, Montserrat } from "next/font/google";
 import { Providers } from "./providers";
-import ThemeSwitcher from "./theme-switcher";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: "400" });
 const lato = Lato({ subsets: ["latin"], weight: "400" });

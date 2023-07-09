@@ -1,15 +1,14 @@
-import { ComponentProps } from "react";
+import type { ComponentProps } from "react";
 import cx from "clsx";
 import ReactMarkdown from "react-markdown";
 import remarkRemoveComments from "remark-remove-comments";
-import {
-  Anchor,
-  Code,
-  Heading as HeadingImpl,
-  Paragraph,
-  Wrapper,
-} from "./html";
 import Prism from "prismjs";
+import Anchor from "./Anchor";
+import Code from "./Code";
+import HeadingImpl from "./Heading";
+import Paragraph from "./Paragraph";
+import ProseWrapper from "./ProseWrapper";
+
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-markup";
 import "prismjs/components/prism-jsx";
@@ -18,7 +17,7 @@ import "prismjs/components/prism-tsx";
 const Heading: Exclude<
   ComponentProps<typeof ReactMarkdown>["components"],
   undefined
->["h1"] = function Heading({ children, level, node, ...restProps }) {
+>["h1"] = function Heading({ children, level, node: _node, ...restProps }) {
   if (
     level === 1 ||
     level === 2 ||
@@ -37,8 +36,8 @@ const Heading: Exclude<
 };
 
 const defaultComponents: ComponentProps<typeof ReactMarkdown>["components"] = {
-  a: (props) => <Anchor {...props} />,
-  code: ({ children, className, inline, node, ...restProps }) => {
+  a: ({ node: _node, ...restProps }) => <Anchor {...restProps} />,
+  code: ({ children, className, inline, node: _node, ...restProps }) => {
     const match = /language-(\w+)/.exec(className || "");
     if (inline || !match || match.length < 2) {
       return <Code {...restProps}>{children}</Code>;
@@ -67,7 +66,7 @@ const defaultComponents: ComponentProps<typeof ReactMarkdown>["components"] = {
   h4: Heading,
   h5: Heading,
   h6: Heading,
-  p: ({ children, node, ...restProps }) => (
+  p: ({ children, node: _node, ...restProps }) => (
     <Paragraph {...restProps}>{children}</Paragraph>
   ),
 };
@@ -78,13 +77,13 @@ const Markdown: typeof ReactMarkdown = function Markdown({
   ...restProps
 }) {
   return (
-    <Wrapper>
+    <ProseWrapper>
       <ReactMarkdown
         components={{ ...defaultComponents, ...components }}
         remarkPlugins={[remarkRemoveComments, ...(remarkPlugins || [])]}
         {...restProps}
       />
-    </Wrapper>
+    </ProseWrapper>
   );
 };
 Markdown.propTypes = ReactMarkdown.propTypes;
