@@ -26,22 +26,11 @@ export default function RootLayout({
           margin: 0,
           background: "var(--background)",
           color: "var(--white)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
         }}
       >
         <Providers>
           <Header />
-          <div
-            style={{
-              width: "calc(100vw - var(--margin-x) * 2)",
-              maxWidth: 832,
-              boxSizing: "border-box",
-            }}
-          >
-            {children}
-          </div>
+          {children}
         </Providers>
       </body>
     </html>
@@ -56,6 +45,8 @@ function Header() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        padding: 16,
+        boxSizing: "border-box",
       }}
     >
       <h1

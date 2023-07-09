@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "@/components/icons";
+import useFocus from "@/hooks/useFocus";
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -12,16 +13,21 @@ export default function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
+  const [focus, { onFocus, onBlur }] = useFocus();
+
   return mounted ? (
     <label
       style={{
         position: "relative",
         display: "inline-flex",
         alignItems: "center",
-        background: "var(--white)",
+        background: theme === "dark" ? "var(--gold-300)" : "var(--purple-200)",
         color: "var(--black)",
         borderRadius: 999,
         padding: 4,
+        boxShadow: focus
+          ? "0 0 0 2px var(--background),0 0 0 4px var(--blue-500)"
+          : undefined,
       }}
     >
       <Moon />
@@ -31,11 +37,9 @@ export default function ThemeSwitcher() {
         onChange={({ target: { checked } }) => {
           setTheme(checked ? "light" : "dark");
         }}
-        style={{
-          visibility: "hidden",
-          width: 0,
-          height: 0,
-        }}
+        style={{ width: 0, height: 0 }}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
       <Sun />
       <div
