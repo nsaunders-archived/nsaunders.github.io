@@ -1,9 +1,9 @@
-import type { ComponentType, ReactNode } from "react";
+import type { FunctionComponent, ReactNode } from "react";
 import { isValidElement } from "react";
 
-export default function isComponent<P>(
-  x: ComponentType<P> | ReactNode
-): x is ComponentType<P> {
+export default function isRenderFunction<P>(
+  x: FunctionComponent<P> | ReactNode
+): x is FunctionComponent<P> {
   return (
     typeof x === "function" ||
     (!!x && typeof x === "object" && !isValidElement(x) && !isIterable(x))

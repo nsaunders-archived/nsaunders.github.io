@@ -1,7 +1,12 @@
-import type { ComponentProps, ComponentType, CSSProperties } from "react";
+import type {
+  ComponentProps,
+  ComponentType,
+  CSSProperties,
+  FunctionComponent,
+} from "react";
 import type { O, U } from "ts-toolbelt";
 import { forwardRef } from "react";
-import isComponent from "@/utils/isComponent";
+import isFunctionComponent from "@/utils/isFunctionComponent";
 
 const headingStyles = [
   {},
@@ -18,7 +23,7 @@ export type ForwardProps = {
 };
 
 export type Props = U.Strict<
-  ComponentProps<"h1"> | { children: ComponentType<ForwardProps> }
+  ComponentProps<"h1"> | { children: FunctionComponent<ForwardProps> }
 > & { level?: 1 | 2 | 3 | 4 | 5 | 6 };
 
 export default forwardRef<HTMLHeadingElement, O.Omit<Props, "ref">>(
@@ -30,9 +35,8 @@ export default forwardRef<HTMLHeadingElement, O.Omit<Props, "ref">>(
       },
     };
 
-    if (isComponent(children)) {
-      const Component = children;
-      return <Component {...forwardProps} />;
+    if (isFunctionComponent(children)) {
+      return children(forwardProps);
     }
 
     const Component = `h${level}` as const;

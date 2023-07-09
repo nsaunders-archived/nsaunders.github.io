@@ -1,10 +1,9 @@
 import "./globals.css";
 
-import { Lato, Montserrat } from "next/font/google";
+import { Lato } from "next/font/google";
 import { Providers } from "./providers";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
+import Header from "@/components/Header";
 
-const montserrat = Montserrat({ subsets: ["latin"], weight: "400" });
 const lato = Lato({ subsets: ["latin"], weight: "400" });
 
 export const metadata = {
@@ -34,34 +33,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  );
-}
-
-function Header() {
-  return (
-    <header
-      style={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: 16,
-        boxSizing: "border-box",
-      }}
-    >
-      <h1
-        className={montserrat.className}
-        style={{
-          textTransform: "uppercase",
-          letterSpacing: "-0.04em",
-          lineHeight: 1,
-          margin: 0,
-          whiteSpace: "nowrap",
-        }}
-      >
-        Nick Saunders
-      </h1>
-      <ThemeSwitcher />
-    </header>
   );
 }

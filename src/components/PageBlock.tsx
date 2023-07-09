@@ -1,12 +1,17 @@
-import type { CSSProperties, ComponentProps, ComponentType } from "react";
+import type {
+  CSSProperties,
+  ComponentProps,
+  ComponentType,
+  FunctionComponent,
+} from "react";
 import type { O, U } from "ts-toolbelt";
 import { forwardRef } from "react";
-import isComponent from "@/utils/isComponent";
+import isFunctionComponent from "@/utils/isFunctionComponent";
 
 export type PageBlockForwardProps = { style?: CSSProperties };
 
 export type PageBlockProps = U.Strict<
-  ComponentProps<"div"> | { children: ComponentType<PageBlockForwardProps> }
+  ComponentProps<"div"> | { children: FunctionComponent<PageBlockForwardProps> }
 >;
 
 export const PageBlock = forwardRef<
@@ -23,12 +28,9 @@ export const PageBlock = forwardRef<
     },
   };
 
-  if (isComponent(children)) {
-    const Component = children;
-    return <Component {...forwardProps} />;
-  }
-
-  return (
+  return isFunctionComponent(children) ? (
+    children(forwardProps)
+  ) : (
     <div ref={ref} {...forwardProps} {...restProps}>
       {children}
     </div>
