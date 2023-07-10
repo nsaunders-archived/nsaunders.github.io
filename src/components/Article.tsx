@@ -1,6 +1,6 @@
 import Heading from "@/components/Heading";
 import { PageBlock } from "@/components/PageBlock";
-import { ifExhausted } from "@/utils/ifExhausted";
+import ifExhausted from "@/utils/ifExhausted";
 import { ReactNode } from "react";
 
 export type Props = {

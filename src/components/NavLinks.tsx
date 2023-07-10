@@ -1,6 +1,6 @@
 "use client";
 
-import { ifExhausted } from "@/utils/ifExhausted";
+import ifExhausted from "@/utils/ifExhausted";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";

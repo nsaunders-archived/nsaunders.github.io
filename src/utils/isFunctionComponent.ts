@@ -1,7 +1,7 @@
 import type { FunctionComponent, ReactNode } from "react";
 import { isValidElement } from "react";
 
-export default function isRenderFunction<P>(
+export default function isFunctionComponent<P>(
   x: FunctionComponent<P> | ReactNode
 ): x is FunctionComponent<P> {
   return (

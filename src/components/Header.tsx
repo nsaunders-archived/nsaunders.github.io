@@ -1,6 +1,6 @@
 "use client";
 
-import { ifExhausted } from "@/utils/ifExhausted";
+import ifExhausted from "@/utils/ifExhausted";
 import { Montserrat } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

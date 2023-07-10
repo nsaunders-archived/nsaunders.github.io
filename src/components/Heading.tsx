@@ -6,17 +6,9 @@ import type {
 } from "react";
 import type { O, U } from "ts-toolbelt";
 import { forwardRef } from "react";
+import Typography from "./Typography";
 import isFunctionComponent from "@/utils/isFunctionComponent";
-
-const headingStyles = [
-  {},
-  makeStyle(3),
-  makeStyle(2.4),
-  makeStyle(2),
-  makeStyle(1.601),
-  makeStyle(1.2, 700),
-  makeStyle(1, 700),
-] as const;
+import ifExhausted from "@/utils/ifExhausted";
 
 export type ForwardProps = {
   style?: CSSProperties;
@@ -27,34 +19,45 @@ export type Props = U.Strict<
 > & { level?: 1 | 2 | 3 | 4 | 5 | 6 };
 
 export default forwardRef<HTMLHeadingElement, O.Omit<Props, "ref">>(
-  function Heading({ children, level = 1, style, ...restProps }, ref) {
-    const forwardProps: ForwardProps = {
-      style: {
-        ...headingStyles[level],
-        ...style,
-      },
-    };
-
-    if (isFunctionComponent(children)) {
-      return children(forwardProps);
-    }
-
-    const Component = `h${level}` as const;
+  function Heading(
+    { children, level = 1, style: headingStyle, ...restProps },
+    ref
+  ) {
+    const DefaultTag = `h${level}` as const;
     return (
-      <Component {...forwardProps} {...restProps} ref={ref}>
-        {children}
-      </Component>
+      <Typography
+        margins
+        variant={
+          (
+            [
+              undefined,
+              "regular4XL",
+              "regular3XL",
+              "regular2XL",
+              "regularXL",
+              "boldLarge",
+              "boldBase",
+            ] as const
+          )[level]
+        }
+      >
+        {({ style: typographyStyle, ...typographyRestProps }) =>
+          ifExhausted(
+            typographyRestProps,
+            isFunctionComponent(children) ? (
+              children({ style: { ...typographyStyle, ...headingStyle } })
+            ) : (
+              <DefaultTag
+                style={{ ...typographyStyle, ...headingStyle }}
+                {...restProps}
+                ref={ref}
+              >
+                {children}
+              </DefaultTag>
+            )
+          )
+        }
+      </Typography>
     );
   }
 ) as ComponentType<Props>;
-
-function makeStyle(fontSizeEm: number, fontWeight: 400 | 700 = 400) {
-  const margin = `${1.5 / fontSizeEm}em`;
-  return {
-    fontSize: `${fontSizeEm}em`,
-    fontWeight,
-    lineHeight: 1.25,
-    marginBlockStart: margin,
-    marginBlockEnd: margin,
-  };
-}
