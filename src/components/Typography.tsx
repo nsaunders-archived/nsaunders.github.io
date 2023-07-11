@@ -34,7 +34,10 @@ export type ForwardProps = {
 
 export type Props = U.Strict<
   ComponentProps<"span"> | { children: FunctionComponent<ForwardProps> }
-> & { margins?: boolean; variant?: keyof typeof variantStyles };
+> & {
+  margins?: boolean;
+  variant?: keyof typeof variantStyles;
+};
 
 export default forwardRef<HTMLSpanElement, O.Omit<Props, "ref">>(
   function Typography(

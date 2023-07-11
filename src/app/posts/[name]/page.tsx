@@ -5,6 +5,7 @@ import Article from "@/components/Article";
 import Heading from "@/components/Heading";
 import ifExhausted from "@/utils/ifExhausted";
 import Typography from "@/components/Typography";
+import Highlight from "@/components/Highlight";
 
 type Props = {
   params: {
@@ -28,7 +29,11 @@ export default async function Page({ params: { name } }: Props) {
                     {({ style, ...restProps }) =>
                       ifExhausted(
                         restProps,
-                        <h2 style={{ ...style }}>{post.data.description}</h2>
+                        <h2 style={{ ...style }}>
+                          <Highlight as="muted">
+                            {post.data.description}
+                          </Highlight>
+                        </h2>
                       )
                     }
                   </Heading>

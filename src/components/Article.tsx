@@ -11,7 +11,14 @@ export type Props = {
 export default function Article({ intro, children }: Props) {
   return (
     <>
-      <div style={{ background: "var(--gray-800)", marginBottom: 16 }}>
+      <div
+        style={{
+          "--bg": "var(--gray-800)",
+          "--fg-muted": "var(--gray-300)",
+          background: "var(--bg)",
+          marginBottom: 16,
+        }}
+      >
         <PageBlock
           style={{
             padding: "4em 0",
