@@ -7,6 +7,7 @@ const Post = t.type({
   content: t.string,
   data: t.type({
     title: t.string,
+    description: t.string,
     date: tt.date,
     tags: t.array(t.string),
   }),

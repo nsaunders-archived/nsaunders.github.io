@@ -4,6 +4,7 @@ import Article from "@/components/Article";
 import Markdown from "@/components/Markdown";
 import Image from "next/image";
 import portrait from "./me.jpg";
+import Heading from "@/components/Heading";
 
 export default async function Page() {
   const page = await PageData.getByName("about");
@@ -12,7 +13,7 @@ export default async function Page() {
       <Article
         intro={
           <>
-            <h1 style={{ all: "unset" }}>About</h1>
+            <Heading level={1}>About</Heading>
             <Image
               src={portrait}
               alt="Nick"

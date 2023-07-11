@@ -16,25 +16,29 @@ export default function ThemeSwitcher() {
 
   const [focus, { onFocus, onBlur }] = useFocus();
 
-  return mounted ? (
+  return (
     <label
       style={{
         position: "relative",
         display: "inline-flex",
         alignItems: "center",
-        background: theme === "dark" ? "var(--gold-300)" : "var(--purple-200)",
+        background: mounted
+          ? theme === "dark"
+            ? "var(--gold-300)"
+            : "var(--purple-200)"
+          : "transparent",
         color: "var(--black)",
         borderRadius: 999,
         padding: 4,
         boxShadow: focus
-          ? "0 0 0 2px var(--background),0 0 0 4px var(--blue-500)"
+          ? "0 0 0 2px var(--bg),0 0 0 4px var(--blue-500)"
           : undefined,
       }}
     >
       <MoonIcon />
       <input
         type="checkbox"
-        checked={theme === "light"}
+        checked={mounted && theme === "light"}
         onChange={({ target: { checked } }) => {
           setTheme(checked ? "light" : "dark");
         }}
@@ -51,10 +55,14 @@ export default function ThemeSwitcher() {
           top: 4,
           background: "var(--black)",
           borderRadius: 999,
-          left: theme === "dark" ? 4 : "calc(100% - 20px)",
+          left: mounted
+            ? theme === "dark"
+              ? 4
+              : "calc(100% - 20px)"
+            : "calc(50% - 8px)",
           transition: "left 0.1s",
         }}
       />
     </label>
-  ) : null;
+  );
 }

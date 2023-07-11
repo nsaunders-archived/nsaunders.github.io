@@ -51,7 +51,7 @@ export default forwardRef<HTMLAnchorElement, O.Omit<Props, "ref">>(
         color: hover ? "var(--blue-300)" : "var(--blue-400)",
         boxShadow:
           focus && !disabled
-            ? "0 0 0 2px var(--background), 0 0 0 4px var(--blue-500)"
+            ? "0 0 0 2px var(--bg), 0 0 0 4px var(--blue-500)"
             : undefined,
         borderRadius: 2,
         ...(selected && { color: "var(--blue-100)" }),
