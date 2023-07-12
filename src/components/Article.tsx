@@ -2,6 +2,7 @@ import Heading from "@/components/Heading";
 import { PageBlock } from "@/components/PageBlock";
 import ifExhausted from "@/utils/ifExhausted";
 import { ReactNode } from "react";
+import Surface from "./Surface";
 
 export type Props = {
   intro: ReactNode;
@@ -11,11 +12,9 @@ export type Props = {
 export default function Article({ intro, children }: Props) {
   return (
     <>
-      <div
+      <Surface
+        color="dark-gray"
         style={{
-          "--bg": "var(--gray-800)",
-          "--fg-muted": "var(--gray-300)",
-          background: "var(--bg)",
           marginBottom: 16,
         }}
       >
@@ -27,7 +26,7 @@ export default function Article({ intro, children }: Props) {
         >
           {intro}
         </PageBlock>
-      </div>
+      </Surface>
       <PageBlock>{children}</PageBlock>
     </>
   );
