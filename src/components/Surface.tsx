@@ -15,18 +15,22 @@ export type ForwardProps = {
 export type Props = U.Strict<
   ComponentProps<"div"> | { children: FunctionComponent<ForwardProps> }
 > & {
-  color?: "dark-gray";
+  theme?: "black" | "dark-gray";
 };
 
 export default forwardRef<HTMLDivElement, O.Omit<Props, "ref">>(
-  function Surface({ children, color, style, ...restProps }, ref) {
+  function Surface({ children, style, theme, ...restProps }, ref) {
     const forwardProps: ForwardProps = {
       style: {
         background: "var(--bg)",
         color: "var(--fg)",
-        ...(color === "dark-gray"
+        "--bg": `var(--${
+          { "dark-gray": "gray-800", black: "black", default: "gray-900" }[
+            theme || "default"
+          ]
+        })`,
+        ...(theme === "dark-gray" || theme === "black"
           ? {
-              "--bg": "var(--gray-800)",
               "--fg": "var(--white)",
               "--fg-bright": "var(--gold-200)",
               "--fg-muted": "var(--gray-300)",

@@ -1,7 +1,5 @@
-import Heading from "@/components/Heading";
+import type { ReactNode } from "react";
 import { PageBlock } from "@/components/PageBlock";
-import ifExhausted from "@/utils/ifExhausted";
-import { ReactNode } from "react";
 import Surface from "./Surface";
 
 export type Props = {
@@ -13,7 +11,7 @@ export default function Article({ intro, children }: Props) {
   return (
     <>
       <Surface
-        color="dark-gray"
+        theme="dark-gray"
         style={{
           marginBottom: 16,
         }}

@@ -3,6 +3,9 @@ import "./globals.css";
 import { Lato } from "next/font/google";
 import { Providers } from "./providers";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Surface from "@/components/Surface";
+import ifExhausted from "@/utils/ifExhausted";
 
 const lato = Lato({ subsets: ["latin"], weight: "400" });
 
@@ -18,23 +21,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={lato.className}
-        style={{
-          "--bg": "var(--black)",
-          "--fg": "var(--white)",
-          "--fg-bright": "var(--gold-400)",
-          "--fg-muted": "var(--gray-500)",
-          margin: 0,
-          background: "var(--bg)",
-          color: "var(--fg)",
-        }}
-      >
-        <Providers>
-          <Header />
-          {children}
-        </Providers>
-      </body>
+      <Surface>
+        {({ style, ...restProps }) =>
+          ifExhausted(
+            restProps,
+            <body className={lato.className} style={{ ...style, margin: 0 }}>
+              <Providers>
+                <Header />
+                {children}
+                <Footer />
+              </Providers>
+            </body>
+          )
+        }
+      </Surface>
     </html>
   );
 }

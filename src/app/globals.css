@@ -1,6 +1,6 @@
 @import "prism-theme-vars/base.css";
 
-/* layout */
+/* responsive */
 
 :root {
   --mobile: 1;
@@ -197,7 +197,7 @@
 
 :root {
   --prism-foreground: var(--white);
-  --prism-background: var(--gray-900);
+  --prism-background: var(--gray-950);
 
   --prism-comment: var(--gray-500);
   --prism-selector: var(--blue-50);
@@ -214,4 +214,15 @@
   --prism-namespace: red;
   --prism-deleted: red;
   --prism-regex: red;
+}
+
+/* layout */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
