@@ -1,7 +1,7 @@
 import { ComponentProps, forwardRef } from "react";
 
 export type Props = {
-  as?: "muted";
+  as?: "muted" | "bright";
 } & ComponentProps<"span">;
 
 export default forwardRef<HTMLSpanElement, Props>(function Highlight({
@@ -14,7 +14,7 @@ export default forwardRef<HTMLSpanElement, Props>(function Highlight({
       {...restProps}
       style={{
         ...style,
-        color: as === "muted" ? "var(--fg-muted)" : undefined,
+        color: as ? `var(--fg-${as})` : undefined,
       }}
     />
   );

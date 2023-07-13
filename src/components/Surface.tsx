@@ -28,6 +28,7 @@ export default forwardRef<HTMLDivElement, O.Omit<Props, "ref">>(
           ? {
               "--bg": "var(--gray-800)",
               "--fg": "var(--white)",
+              "--fg-bright": "var(--gold-200)",
               "--fg-muted": "var(--gray-300)",
             }
           : undefined),
