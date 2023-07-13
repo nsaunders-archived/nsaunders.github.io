@@ -5,6 +5,7 @@ import ifExhausted from "@/utils/ifExhausted";
 import LinkAnchor from "./LinkAnchor";
 import ProseWrapper from "./ProseWrapper";
 import Typography from "./Typography";
+import Highlight from "./Highlight";
 
 export type Props = {
   children: Post;
@@ -20,11 +21,16 @@ export default forwardRef<HTMLDivElement, Props>(function PostListItem(
         style={{
           display: "flex",
           gap: "0.5em",
-          color: "var(--gray-500)",
         }}
       >
-        <span>{format(date, "MMM d, yyyy")}</span>
-        <span>{readingTime.minutes.toFixed()} min read</span>
+        <span>
+          <Highlight as="muted">{format(date, "MMM d, yyyy")}</Highlight>
+        </span>
+        <span>
+          <Highlight as="muted">
+            {readingTime.minutes.toFixed()} min read
+          </Highlight>
+        </span>
       </div>
       <Typography variant="regularXL">
         {({ style, ...restProps }) =>

@@ -21,10 +21,13 @@ export default function RootLayout({
       <body
         className={lato.className}
         style={{
-          "--background": "var(--black)",
+          "--bg": "var(--black)",
+          "--fg": "var(--white)",
+          "--fg-bright": "var(--gold-400)",
+          "--fg-muted": "var(--gray-500)",
           margin: 0,
-          background: "var(--background)",
-          color: "var(--white)",
+          background: "var(--bg)",
+          color: "var(--fg)",
         }}
       >
         <Providers>
