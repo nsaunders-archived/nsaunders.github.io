@@ -2,11 +2,7 @@ import * as Posts from "@/data/Posts";
 import { PageBlock } from "@/components/PageBlock";
 import ifExhausted from "@/utils/ifExhausted";
 import Heading from "@/components/Heading";
-import readingTime from "reading-time";
-import { format } from "date-fns";
-import LinkAnchor from "@/components/LinkAnchor";
-import Typography from "@/components/Typography";
-import ProseWrapper from "@/components/ProseWrapper";
+import PostListItem from "@/components/PostListItem";
 
 export default async function Blog() {
   const posts = await Posts.listWithDetails();
@@ -21,36 +17,21 @@ export default async function Blog() {
                 ifExhausted(restProps, <h1 style={style}>Blog</h1>)
               }
             </Heading>
-            <ul style={{ all: "unset", listStyle: "none" }}>
-              {posts.map(
-                ({ name, content, data: { date, title, description } }) => (
-                  <li key={name} style={{ marginTop: "2em" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "0.5em",
-                        color: "var(--gray-500)",
-                      }}
-                    >
-                      <span>{format(date, "MMM d, yyyy")}</span>
-                      <span>
-                        {readingTime(content).minutes.toFixed()} min read
-                      </span>
-                    </div>
-                    <Typography variant="regularXL">
-                      {({ style, ...restProps }) =>
-                        ifExhausted(
-                          restProps,
-                          <LinkAnchor style={style} href={`/posts/${name}`}>
-                            {title}
-                          </LinkAnchor>
-                        )
-                      }
-                    </Typography>
-                    <ProseWrapper>{description}</ProseWrapper>
-                  </li>
-                )
-              )}
+            <ul
+              style={{
+                all: "unset",
+                listStyle: "none",
+                display: "flex",
+                flexDirection: "column",
+                gap: "2em",
+                marginTop: "2em",
+              }}
+            >
+              {posts.map((post) => (
+                <li key={post.name}>
+                  <PostListItem>{post}</PostListItem>
+                </li>
+              ))}
             </ul>
           </main>
         )

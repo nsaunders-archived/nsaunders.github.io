@@ -24,15 +24,13 @@ export default async function Page({ params: { name } }: Props) {
               ifExhausted(
                 restProps,
                 <div style={style}>
-                  <Heading level={1}>{post.data.title}</Heading>
+                  <Heading level={1}>{post.title}</Heading>
                   <Heading level={3}>
                     {({ style, ...restProps }) =>
                       ifExhausted(
                         restProps,
-                        <h2 style={{ ...style }}>
-                          <Highlight as="muted">
-                            {post.data.description}
-                          </Highlight>
+                        <h2 style={style}>
+                          <Highlight as="muted">{post.description}</Highlight>
                         </h2>
                       )
                     }
