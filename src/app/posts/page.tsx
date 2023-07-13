@@ -1,4 +1,3 @@
-import Link from "next/link";
 import * as Posts from "@/data/Posts";
 import { PageBlock } from "@/components/PageBlock";
 import ifExhausted from "@/utils/ifExhausted";
