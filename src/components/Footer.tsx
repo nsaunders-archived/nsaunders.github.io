@@ -15,6 +15,8 @@ export default function Footer() {
               <Anchor href="https://linkedin.com/in/nicksaunders">
                 LinkedIn
               </Anchor>
+              <div style={{ flex: 1 }} />
+              <Anchor href="https://nsaunders.dev/rss.xml">RSS</Anchor>
             </div>
           </footer>
         )

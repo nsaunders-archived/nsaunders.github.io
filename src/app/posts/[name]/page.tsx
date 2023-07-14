@@ -6,12 +6,18 @@ import Heading from "@/components/Heading";
 import ifExhausted from "@/utils/ifExhausted";
 import Typography from "@/components/Typography";
 import Highlight from "@/components/Highlight";
+import * as Posts from "@/data/Posts";
 
 type Props = {
   params: {
     name: string;
   };
 };
+
+export async function generateStaticParams() {
+  const posts = await Posts.list();
+  return posts.map(({ name }) => name);
+}
 
 export default async function Page({ params: { name } }: Props) {
   const post = await Post.getByName(name);

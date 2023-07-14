@@ -48,7 +48,7 @@ export default function LinkAnchor({
             onBlur={onBlur}
             onMouseEnter={(e) => {
               linkOnMouseEnter?.(e);
-              anchorOnMouseEnter?.(e);
+              anchorOnMouseEnter?.();
             }}
             onMouseLeave={onMouseLeave}
             style={{ ...anchorStyle, ...linkStyle }}

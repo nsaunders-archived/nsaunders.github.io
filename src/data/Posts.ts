@@ -8,11 +8,15 @@ const Posts = t.array(
   })
 );
 
-export async function listWithDetails() {
+export async function list() {
   const res = await fetch(
     "https://api.github.com/repos/nsaunders/writing/contents/posts"
   );
-  const posts = await tPromise.decode(Posts, await res.json());
+  return await tPromise.decode(Posts, await res.json());
+}
+
+export async function listWithDetails() {
+  const posts = await list();
   const postsWithDetails = await Promise.all(
     posts.map(({ name }) => Post.getByName(name))
   );

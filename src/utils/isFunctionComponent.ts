@@ -10,6 +10,7 @@ export default function isFunctionComponent<P>(
   );
 }
 
-function isIterable(x: unknown): x is Iterable<unknown> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isIterable(x: any): x is Iterable<unknown> {
   return Symbol.iterator in x;
 }
