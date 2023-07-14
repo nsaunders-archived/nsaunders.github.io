@@ -1,11 +1,12 @@
 import { forwardRef } from "react";
-import { format } from "date-fns";
 import { Post } from "@/data/Post";
 import ifExhausted from "@/utils/ifExhausted";
 import LinkAnchor from "./LinkAnchor";
 import ProseWrapper from "./ProseWrapper";
 import Typography from "./Typography";
 import Highlight from "./Highlight";
+import FormatDate from "./FormatDate";
+import FormatReadingTime from "./FormatReadingTime";
 
 export type Props = {
   children: Post;
@@ -24,11 +25,13 @@ export default forwardRef<HTMLDivElement, Props>(function PostListItem(
         }}
       >
         <span>
-          <Highlight as="muted">{format(date, "MMM d, yyyy")}</Highlight>
+          <Highlight as="muted">
+            <FormatDate>{date}</FormatDate>
+          </Highlight>
         </span>
         <span>
           <Highlight as="muted">
-            {readingTime.minutes.toFixed()} min read
+            <FormatReadingTime>{readingTime}</FormatReadingTime>
           </Highlight>
         </span>
       </div>

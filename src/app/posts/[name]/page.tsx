@@ -7,6 +7,12 @@ import ifExhausted from "@/utils/ifExhausted";
 import Typography from "@/components/Typography";
 import Highlight from "@/components/Highlight";
 import * as Posts from "@/data/Posts";
+import LabelValuePair from "@/components/LabelValuePair";
+import CalendarIcon from "@/components/CalendarIcon";
+import FormatDate from "@/components/FormatDate";
+import ScreenReaderOnly from "@/components/ScreenReaderOnly";
+import FormatReadingTime from "@/components/FormatReadingTime";
+import ClockIcon from "@/components/ClockIcon";
 
 type Props = {
   params: {
@@ -41,6 +47,27 @@ export default async function Page({ params: { name } }: Props) {
                       )
                     }
                   </Heading>
+                  <div
+                    style={{ display: "flex", gap: "2em", marginTop: "3em" }}
+                  >
+                    <LabelValuePair
+                      label={
+                        <>
+                          <CalendarIcon aria-hidden />
+                          <ScreenReaderOnly>Posted date</ScreenReaderOnly>
+                        </>
+                      }
+                      value={<FormatDate>{post.date}</FormatDate>}
+                    />
+                    <LabelValuePair
+                      label={<ClockIcon aria-hidden />}
+                      value={
+                        <FormatReadingTime>
+                          {post.readingTime}
+                        </FormatReadingTime>
+                      }
+                    />
+                  </div>
                 </div>
               )
             }

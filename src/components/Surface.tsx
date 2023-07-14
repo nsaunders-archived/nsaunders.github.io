@@ -29,13 +29,9 @@ export default forwardRef<HTMLDivElement, O.Omit<Props, "ref">>(
             theme || "default"
           ]
         })`,
-        ...(theme === "dark-gray" || theme === "black"
-          ? {
-              "--fg": "var(--white)",
-              "--fg-bright": "var(--gold-200)",
-              "--fg-muted": "var(--gray-300)",
-            }
-          : undefined),
+        "--fg": "var(--white)",
+        "--fg-bright": "var(--gold-200)",
+        "--fg-muted": `var(--gray-${theme === "dark-gray" ? 4 : 5}00)`,
         ...style,
       },
     };
