@@ -13,6 +13,8 @@ import FormatDate from "@/components/FormatDate";
 import ScreenReaderOnly from "@/components/ScreenReaderOnly";
 import FormatReadingTime from "@/components/FormatReadingTime";
 import ClockIcon from "@/components/ClockIcon";
+import Anchor from "@/components/Anchor";
+import * as meta from "@/meta";
 
 type Props = {
   params: {
@@ -95,6 +97,21 @@ export default async function Page({ params: { name } }: Props) {
         >
           {post.content}
         </Markdown>
+        <div style={{ marginTop: "2em", display: "flex", gap: "0.5em" }}>
+          <Anchor
+            href={`https://twitter.com/search?q=${encodeURIComponent(
+              `${meta.posts}/${post.name}`
+            )}`}
+          >
+            Discuss this post
+          </Anchor>
+          <Highlight as="muted">|</Highlight>
+          <Anchor
+            href={`https://github.com/nsaunders/writing/edit/master/posts/${post.name}/index.md`}
+          >
+            Suggest an edit
+          </Anchor>
+        </div>
       </Article>
     </main>
   );
