@@ -1,5 +1,5 @@
 import * as Posts from "@/data/Posts";
-import { PageBlock } from "@/components/PageBlock";
+import PageBlock from "@/components/PageBlock";
 import ifExhausted from "@/utils/ifExhausted";
 import Heading from "@/components/Heading";
 import PostListItem from "@/components/PostListItem";

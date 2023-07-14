@@ -4,11 +4,10 @@ export type Props = {
   as?: "muted" | "bright";
 } & ComponentProps<"span">;
 
-export default forwardRef<HTMLSpanElement, Props>(function Highlight({
-  as,
-  style,
-  ...restProps
-}) {
+export default forwardRef<HTMLSpanElement, Props>(function Highlight(
+  { as, style, ...restProps },
+  ref
+) {
   return (
     <span
       {...restProps}
@@ -16,6 +15,7 @@ export default forwardRef<HTMLSpanElement, Props>(function Highlight({
         ...style,
         color: as ? `var(--fg-${as})` : undefined,
       }}
+      ref={ref}
     />
   );
 });

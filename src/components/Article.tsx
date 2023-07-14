@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { PageBlock } from "@/components/PageBlock";
+import PageBlock from "@/components/PageBlock";
 import Surface from "./Surface";
 
 export type Props = {
