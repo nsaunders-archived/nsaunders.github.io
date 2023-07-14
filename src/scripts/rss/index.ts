@@ -5,21 +5,22 @@ import fs from "fs/promises";
 import path from "path";
 import RSS from "rss";
 import * as Posts from "../../data/Posts";
+import * as meta from "@/meta";
 
 async function main() {
   const rss = new RSS({
-    title: "Nick Saunders - nsaunders.dev",
-    description: "Nick Saunders' technology profile and blog",
-    feed_url: "https://nsaunders.dev/rss.xml",
-    site_url: "https://nsaunders.dev",
-    image_url: "https://nsaunders.dev/photo.jpg",
+    title: meta.title,
+    description: meta.description,
+    feed_url: meta.rss,
+    site_url: meta.publicURL,
+    image_url: `${meta.publicURL}/photo.jpg`,
   });
   const posts = await Posts.listWithDetails();
   posts.forEach(({ name, title, description, date }) => {
     rss.item({
       title,
       description,
-      url: `https://nsaunders.dev/posts/${name}`,
+      url: `${meta.posts}/${name}`,
       date,
     });
   });
