@@ -8,7 +8,7 @@ export default function Footer() {
       {({ style, ...restProps }) =>
         ifExhausted(
           restProps,
-          <footer style={{ ...style, marginTop: "2em", padding: "1em" }}>
+          <footer style={{ ...style, marginTop: "4em", padding: "1em" }}>
             <div style={{ display: "flex", gap: 16 }}>
               <Anchor href="https://twitter.com/agilecoder">Twitter</Anchor>
               <Anchor href="https://github.com/nsaunders">GitHub</Anchor>
