@@ -13,29 +13,21 @@ export default async function Home() {
       <Article
         intro={
           <>
-            <Typography
-              variant="regular3XL"
-              margins
-              style={{ marginBlockStart: 0 }}
-            >
+            <Typography variant="regular3XL" margins>
               {({ style, ...restProps }) =>
                 ifExhausted(
                   restProps,
-                  <p style={style}>
+                  <p style={{ ...style, marginBlockStart: 0 }}>
                     <Highlight as="bright">Hi there, I&apos;m Nick.</Highlight>
                   </p>
                 )
               }
             </Typography>
-            <Typography
-              variant="regularXL"
-              margins
-              style={{ marginBlockEnd: 0 }}
-            >
+            <Typography variant="regularXL" margins>
               {({ style, ...restProps }) =>
                 ifExhausted(
                   restProps,
-                  <p style={style}>
+                  <p style={{ ...style, marginBlockEnd: 0 }}>
                     I&apos;m an experienced software engineer focused on React,
                     TypeScript, and Design Systems. I also dabble in functional
                     programming via PureScript.
