@@ -3,7 +3,7 @@ import { resolveURL } from "ufo";
 import Markdown from "@/components/Markdown";
 import Article from "@/components/Article";
 import Heading from "@/components/Heading";
-import ifExhausted from "@/utils/ifExhausted";
+import exhausted from "@/utils/exhausted";
 import Highlight from "@/components/Highlight";
 import * as Posts from "@/data/Posts";
 import LabelValuePair from "@/components/LabelValuePair";
@@ -40,8 +40,7 @@ export default async function Page({ params: { name } }: Props) {
             </Heading>
             <Heading level={3}>
               {({ style, ...restProps }) =>
-                ifExhausted(
-                  restProps,
+                exhausted(restProps) && (
                   <h2 style={style}>
                     <Highlight as="muted">{post.description}</Highlight>
                   </h2>

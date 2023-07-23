@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { Post } from "@/data/Post";
-import ifExhausted from "@/utils/ifExhausted";
+import exhausted from "@/utils/exhausted";
 import LinkAnchor from "./LinkAnchor";
 import ProseWrapper from "./ProseWrapper";
 import Typography from "./Typography";
@@ -37,8 +37,7 @@ export default forwardRef<HTMLDivElement, Props>(function PostListItem(
       </div>
       <Typography variant="regularXL">
         {({ style, ...restProps }) =>
-          ifExhausted(
-            restProps,
+          exhausted(restProps) && (
             <LinkAnchor style={style} href={`/posts/${name}`}>
               {title}
             </LinkAnchor>

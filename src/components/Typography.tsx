@@ -2,11 +2,10 @@ import type {
   ComponentProps,
   ComponentType,
   CSSProperties,
-  FunctionComponent,
+  ReactElement,
 } from "react";
 import { O, U } from "ts-toolbelt";
 import { forwardRef } from "react";
-import isFunctionComponent from "@/utils/isFunctionComponent";
 
 function makeStyle(fontSizeEm: number, fontWeight: 400 | 700 = 400) {
   const marginBlock = `${1.5 / fontSizeEm}em`;
@@ -34,11 +33,14 @@ export type ForwardProps = {
 };
 
 export type Props = U.Strict<
-  ComponentProps<"span"> | { children: FunctionComponent<ForwardProps> }
-> & {
-  margins?: boolean;
-  variant?: keyof typeof variantStyles;
-};
+  (
+    | ComponentProps<"span">
+    | { children: (forwardProps: ForwardProps) => ReactElement }
+  ) & {
+    margins?: boolean;
+    variant?: keyof typeof variantStyles;
+  }
+>;
 
 export default forwardRef<HTMLSpanElement, O.Omit<Props, "ref">>(
   function Typography(
@@ -54,7 +56,7 @@ export default forwardRef<HTMLSpanElement, O.Omit<Props, "ref">>(
       },
     };
 
-    return isFunctionComponent(children) ? (
+    return typeof children === "function" ? (
       children(forwardProps)
     ) : (
       <span {...forwardProps} {...restProps} ref={ref}>

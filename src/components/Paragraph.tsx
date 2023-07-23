@@ -1,19 +1,19 @@
-import type {
+import {
   CSSProperties,
   ComponentProps,
   ComponentType,
-  FunctionComponent,
+  ReactElement,
+  forwardRef,
 } from "react";
-import type { O, U } from "ts-toolbelt";
-import { forwardRef } from "react";
-import isFunctionComponent from "@/utils/isFunctionComponent";
+import { O, U } from "ts-toolbelt";
 
 export type ForwardProps = {
   style?: CSSProperties;
 };
 
 export type Props = U.Strict<
-  ComponentProps<"p"> | { children: FunctionComponent<ForwardProps> }
+  | ComponentProps<"p">
+  | { children: (forwardProps: ForwardProps) => ReactElement }
 >;
 
 export default forwardRef<HTMLParagraphElement, O.Omit<Props, "ref">>(
@@ -27,7 +27,7 @@ export default forwardRef<HTMLParagraphElement, O.Omit<Props, "ref">>(
       },
     };
 
-    return isFunctionComponent(children) ? (
+    return typeof children == "function" ? (
       children(forwardProps)
     ) : (
       <p {...forwardProps} {...restProps} ref={ref}>

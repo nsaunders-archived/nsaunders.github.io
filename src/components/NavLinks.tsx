@@ -1,6 +1,6 @@
 "use client";
 
-import ifExhausted from "@/utils/ifExhausted";
+import exhausted from "@/utils/exhausted";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
@@ -31,8 +31,7 @@ export default function NavLinks() {
               tabIndex,
               ...restProps
             }) =>
-              ifExhausted(
-                restProps,
+              exhausted(restProps) && (
                 <Link
                   href={href}
                   style={style}

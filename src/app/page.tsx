@@ -4,7 +4,7 @@ import Highlight from "@/components/Highlight";
 import PostListItem from "@/components/PostListItem";
 import Typography from "@/components/Typography";
 import * as Posts from "@/data/Posts";
-import ifExhausted from "@/utils/ifExhausted";
+import exhausted from "@/utils/exhausted";
 
 export default async function Home() {
   const latestPost = await Posts.getByLatest();
@@ -15,8 +15,7 @@ export default async function Home() {
           <>
             <Typography variant="regular3XL" margins>
               {({ style, ...restProps }) =>
-                ifExhausted(
-                  restProps,
+                exhausted(restProps) && (
                   <p style={{ ...style, marginBlockStart: 0 }}>
                     <Highlight as="bright">Hi there, I&apos;m Nick.</Highlight>
                   </p>
@@ -25,8 +24,7 @@ export default async function Home() {
             </Typography>
             <Typography variant="regularXL" margins>
               {({ style, ...restProps }) =>
-                ifExhausted(
-                  restProps,
+                exhausted(restProps) && (
                   <p style={{ ...style, marginBlockEnd: 0 }}>
                     I&apos;m an experienced software engineer focused on React,
                     TypeScript, and Design Systems. I also dabble in functional

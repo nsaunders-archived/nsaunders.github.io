@@ -1,16 +1,15 @@
 "use client";
 
-import type {
+import {
   ComponentProps,
   ComponentType,
   CSSProperties,
   FocusEvent,
-  FunctionComponent,
   MouseEvent,
+  ReactElement,
+  forwardRef,
 } from "react";
-import type { O, U } from "ts-toolbelt";
-import { forwardRef } from "react";
-import isFunctionComponent from "@/utils/isFunctionComponent";
+import { O, U } from "ts-toolbelt";
 import useHover from "@/hooks/useHover";
 import useFocus from "@/hooks/useFocus";
 
@@ -25,8 +24,14 @@ export type ForwardProps = {
 };
 
 export type Props = U.Strict<
-  ComponentProps<"a"> | { children: FunctionComponent<ForwardProps> }
-> & { disabled?: boolean; selected?: boolean };
+  (
+    | ComponentProps<"a">
+    | { children: (forwardProps: ForwardProps) => ReactElement }
+  ) & {
+    disabled?: boolean;
+    selected?: boolean;
+  }
+>;
 
 export default forwardRef<HTMLAnchorElement, O.Omit<Props, "ref">>(
   function Anchor({ children, disabled, selected, style, ...restProps }, ref) {
@@ -61,7 +66,7 @@ export default forwardRef<HTMLAnchorElement, O.Omit<Props, "ref">>(
       tabIndex: disabled ? -1 : undefined,
     };
 
-    return isFunctionComponent(children) ? (
+    return typeof children === "function" ? (
       children(forwardProps)
     ) : (
       <a {...forwardProps} {...restProps} ref={ref}>

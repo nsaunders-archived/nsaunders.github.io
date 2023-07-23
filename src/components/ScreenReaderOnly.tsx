@@ -3,10 +3,9 @@ import {
   ComponentProps,
   ComponentType,
   forwardRef,
-  ReactNode,
+  ReactElement,
 } from "react";
-import { U } from "ts-toolbelt";
-import isFunctionComponent from "@/utils/isFunctionComponent";
+import { O, U } from "ts-toolbelt";
 
 export type ForwardProps = {
   style?: CSSProperties;
@@ -15,32 +14,31 @@ export type ForwardProps = {
 export type Props = U.Strict<
   | ComponentProps<"span">
   | {
-      children: ReactNode;
+      children: (forwardProps: ForwardProps) => ReactElement;
     }
 >;
 
-export default forwardRef(function ScreenReaderOnly(
-  { children, style, ...restProps },
-  ref
-) {
-  const forwardProps: ForwardProps = {
-    style: {
-      position: "absolute",
-      width: 1,
-      height: 1,
-      padding: 0,
-      margin: -1,
-      overflow: "hidden",
-      clip: "rect(0, 0, 0, 0)",
-      border: 0,
-      ...style,
-    },
-  };
-  return isFunctionComponent(children) ? (
-    children(forwardProps)
-  ) : (
-    <span {...forwardProps} {...restProps} ref={ref}>
-      {children}
-    </span>
-  );
-}) as ComponentType<Props>;
+export default forwardRef<HTMLSpanElement, O.Omit<Props, "ref">>(
+  function ScreenReaderOnly({ children, style, ...restProps }, ref) {
+    const forwardProps: ForwardProps = {
+      style: {
+        position: "absolute",
+        width: 1,
+        height: 1,
+        padding: 0,
+        margin: -1,
+        overflow: "hidden",
+        clip: "rect(0, 0, 0, 0)",
+        border: 0,
+        ...style,
+      },
+    };
+    return typeof children === "function" ? (
+      children(forwardProps)
+    ) : (
+      <span {...forwardProps} {...restProps} ref={ref}>
+        {children}
+      </span>
+    );
+  }
+) as ComponentType<Props>;

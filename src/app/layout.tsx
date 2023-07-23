@@ -5,7 +5,7 @@ import { Providers } from "./providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Surface from "@/components/Surface";
-import ifExhausted from "@/utils/ifExhausted";
+import exhausted from "@/utils/exhausted";
 import { title, description } from "@/meta";
 
 const lato = Lato({ subsets: ["latin"], weight: "400" });
@@ -21,8 +21,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <Surface>
         {({ style, ...restProps }) =>
-          ifExhausted(
-            restProps,
+          exhausted(restProps) && (
             <body className={lato.className} style={{ ...style, margin: 0 }}>
               <Providers>
                 <Header />

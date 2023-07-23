@@ -1,7 +1,5 @@
-import type { ComponentProps, ComponentType, FunctionComponent } from "react";
-import type { O, U } from "ts-toolbelt";
-import { forwardRef } from "react";
-import isFunctionComponent from "@/utils/isFunctionComponent";
+import { ComponentProps, ComponentType, ReactElement, forwardRef } from "react";
+import { O, U } from "ts-toolbelt";
 import { Inconsolata } from "next/font/google";
 import cx from "clsx";
 
@@ -10,7 +8,8 @@ export type ForwardProps = {
 };
 
 export type Props = U.Strict<
-  ComponentProps<"code"> | { children: FunctionComponent<ForwardProps> }
+  | ComponentProps<"code">
+  | { children: (forwardProps: ForwardProps) => ReactElement }
 >;
 
 const inconsolata = Inconsolata({ weight: "400", subsets: ["latin"] });
@@ -23,7 +22,7 @@ export default forwardRef<HTMLElement, O.Omit<Props, "ref">>(function Code(
     className: cx(className, inconsolata.className),
   };
 
-  return isFunctionComponent(children) ? (
+  return typeof children === "function" ? (
     children(forwardProps)
   ) : (
     <code {...forwardProps} {...restProps} ref={ref}>
