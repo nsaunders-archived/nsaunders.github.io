@@ -6,5 +6,6 @@ declare module "react" {
     "--fg"?: CSS.Property.Color;
     "--fg-bright"?: CSS.Property.Color;
     "--fg-muted"?: CSS.Property.Color;
+    "--fg-error"?: CSS.Property.Color;
   }
 }

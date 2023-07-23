@@ -15,6 +15,8 @@ import FormatReadingTime from "@/components/FormatReadingTime";
 import ClockIcon from "@/components/ClockIcon";
 import Anchor from "@/components/Anchor";
 import * as meta from "@/meta";
+import Subscribe from "@/components/Subscribe";
+import PageBlock from "@/components/PageBlock";
 
 type Props = {
   params: {
@@ -97,7 +99,7 @@ export default async function Page({ params: { name } }: Props) {
         >
           {post.content}
         </Markdown>
-        <div style={{ marginTop: "2em", display: "flex", gap: "0.5em" }}>
+        <div style={{ display: "flex", gap: "0.5em" }}>
           <Anchor
             href={`https://twitter.com/search?q=${encodeURIComponent(
               `${meta.posts}/${post.name}`
@@ -113,6 +115,9 @@ export default async function Page({ params: { name } }: Props) {
           </Anchor>
         </div>
       </Article>
+      <PageBlock style={{ marginTop: "4em" }}>
+        <Subscribe />
+      </PageBlock>
     </main>
   );
 }

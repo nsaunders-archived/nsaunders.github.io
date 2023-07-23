@@ -24,6 +24,7 @@ const variantStyles = {
   boldLarge: makeStyle(1.2, 700),
   regularXL: makeStyle(1.601),
   regular2XL: makeStyle(2),
+  bold2XL: makeStyle(2, 700),
   regular3XL: makeStyle(2.4),
   regular4XL: makeStyle(3),
 } as const;
