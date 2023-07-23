@@ -59,20 +59,17 @@ export default forwardRef<HTMLInputElement, Props>(function TextInput(
                           onFocus={onFocus}
                           value={value}
                           ref={ref}
-                          style={(() => {
-                            console.log(highlightStyle);
-                            return {
-                              appearance: "none",
-                              outline: 0,
-                              border: 0,
-                              margin: 0,
-                              padding: "0.5em 0.75em",
-                              borderRadius: "0.25em",
-                              ...surfaceStyle,
-                              ...typographyStyle,
-                              ...highlightStyle,
-                            };
-                          })()}
+                          style={{
+                            appearance: "none",
+                            outline: 0,
+                            border: 0,
+                            margin: 0,
+                            padding: "0.5em 0.75em",
+                            borderRadius: "0.25em",
+                            ...surfaceStyle,
+                            ...typographyStyle,
+                            ...highlightStyle,
+                          }}
                           disabled={disabled}
                           {...restProps}
                         />
