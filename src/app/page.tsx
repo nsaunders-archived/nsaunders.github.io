@@ -13,7 +13,11 @@ export default async function Home() {
       <Article
         intro={
           <>
-            <Typography variant="regular3XL" margins>
+            <Typography
+              variant="regular3XL"
+              margins
+              style={{ marginBlockStart: 0 }}
+            >
               {({ style, ...restProps }) =>
                 ifExhausted(
                   restProps,
@@ -23,7 +27,11 @@ export default async function Home() {
                 )
               }
             </Typography>
-            <Typography variant="regularXL" margins>
+            <Typography
+              variant="regularXL"
+              margins
+              style={{ marginBlockEnd: 0 }}
+            >
               {({ style, ...restProps }) =>
                 ifExhausted(
                   restProps,
