@@ -43,14 +43,17 @@ export default forwardRef<HTMLDivElement, O.Omit<Props, "ref">>(
         "--fg": `var(--${staticPrefix}${
           theme === "white" || theme === "light-gray" ? "black" : "white"
         })`,
-        "--fg-bright": `var(--${staticPrefix}gold-${
-          theme === "white" ? "400" : theme === "light-gray" ? "500" : "200"
-        })`,
         "--fg-muted": `var(--${staticPrefix}gray-${
           theme === "white" || theme === "dark-gray" ? 4 : 5
         }00)`,
+        "--fg-bright": `var(--${staticPrefix}gold-${
+          theme === "white" ? "400" : theme === "light-gray" ? "500" : "200"
+        })`,
+        "--fg-success": `var(--${staticPrefix}green-${
+          theme === "white" || theme === "light-gray" ? 6 : 3
+        }00)`,
         "--fg-error": `var(--${staticPrefix}red-${
-          theme === "white" || theme === "light-gray" ? 6 : 4
+          theme === "white" || theme === "light-gray" ? 6 : 3
         }00)`,
         ...style,
       },

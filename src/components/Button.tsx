@@ -16,6 +16,7 @@ export type ForwardProps = Partial<
   ReturnType<typeof useHover>[1] &
     ReturnType<typeof useFocusOutline>[1] &
     ReturnType<typeof useActive>[1] & {
+      disabled?: boolean;
       style?: CSSProperties;
     }
 >;
@@ -32,6 +33,7 @@ export default forwardRef<HTMLButtonElement, O.Omit<Props, "ref">>(
     {
       children,
       className = "",
+      disabled,
       onAnimationStart,
       onBlur,
       onFocus,
@@ -79,8 +81,12 @@ export default forwardRef<HTMLButtonElement, O.Omit<Props, "ref">>(
         {({ style: typographyStyle, ...restTypography }) => {
           exhausted(restTypography);
 
-          const forwardCommon: Pick<ForwardProps, "className" | "style"> = {
+          const forwardCommon: Pick<
+            ForwardProps,
+            "className" | "disabled" | "style"
+          > = {
             className: `${activeClassName || ""} ${className || ""}`,
+            disabled,
             style: {
               appearance: "none",
               outline: "none",
@@ -89,9 +95,14 @@ export default forwardRef<HTMLButtonElement, O.Omit<Props, "ref">>(
               border: 0,
               borderRadius: "0.25em",
               background: `var(--static-${
-                active ? "blue-500" : `blue-${hover ? 6 : 7}00`
+                disabled
+                  ? "gray-600"
+                  : active
+                  ? "blue-500"
+                  : `blue-${hover ? 6 : 7}00`
               })`,
-              color: "var(--static-white)",
+              color: `var(--static-${disabled ? "gray-300" : "white"})`,
+              cursor: disabled ? "not-allowed" : "default",
               ...focusOutlineStyle,
               ...typographyStyle,
               ...style,

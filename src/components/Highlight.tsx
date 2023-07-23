@@ -10,7 +10,7 @@ export type Props = U.Strict<
     | ComponentProps<"span">
     | { children: (forwardProps: ForwardProps) => ReactElement }
   ) & {
-    as?: "muted" | "bright" | "error";
+    as?: "muted" | "bright" | "success" | "error";
   }
 >;
 
@@ -18,7 +18,7 @@ export default forwardRef<HTMLSpanElement, O.Omit<Props, "ref">>(
   function Highlight({ as, children, style, ...restProps }, ref) {
     const forwardProps: ForwardProps = {
       style: {
-        color: as ? `var(--fg-${as})` : undefined,
+        ...(as ? { color: `var(--fg-${as})` } : undefined),
         ...style,
       },
     };

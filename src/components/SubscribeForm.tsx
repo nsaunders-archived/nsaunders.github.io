@@ -131,7 +131,7 @@ export default function Subscribe() {
               dispatch({ tag: "submit" });
             }}
           >
-            <label style={{ display: "contents " }}>
+            <label style={{ display: "contents" }}>
               <Typography variant="boldBase">First name</Typography>
               <TextInput
                 disabled={disabled}
@@ -156,7 +156,7 @@ export default function Subscribe() {
               </Highlight>
             </label>
             <div />
-            <label style={{ display: "contents " }}>
+            <label style={{ display: "contents" }}>
               <Typography variant="boldBase">Email address</Typography>
               <TextInput
                 disabled={disabled}
@@ -188,7 +188,22 @@ export default function Subscribe() {
             >
               Subscribe
             </Button>
-            {state.status.tag === "completed" && <p>{state.status.msg}</p>}
+            <div />
+            <Highlight
+              as={
+                state.status.tag === "completed" ? state.status.result : "muted"
+              }
+            >
+              {state.status.tag === "completed" ? (
+                state.status.msg
+              ) : (
+                <>
+                  &#x200b;
+                  <br />
+                  &#x200b;
+                </>
+              )}
+            </Highlight>
           </form>
         )
       }

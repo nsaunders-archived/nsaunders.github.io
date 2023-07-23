@@ -9,17 +9,24 @@ export default function Subscribe() {
     <Surface theme="light-gray">
       {({ style, ...restProps }) =>
         exhausted(restProps) && (
-          <section style={{ ...style, gap: "1em", display: "flex" }}>
-            <Surface theme="light-gray" style={{ flex: 1, padding: "3em" }}>
+          <section
+            style={{
+              ...style,
+              gap: "1em",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 2fr))",
+            }}
+          >
+            <Surface theme="light-gray" style={{ padding: "3em" }}>
               <Typography variant="bold2XL">
                 {({ style, ...restProps }) =>
                   exhausted(restProps) && <h1 style={style}>Stay informed</h1>
                 }
               </Typography>
-              <Typography variant="regularXL">
+              <Typography variant="regularXL" margins>
                 {({ style, ...restProps }) =>
                   exhausted(restProps) && (
-                    <p style={{ ...style, marginBlock: "0.5em" }}>
+                    <p style={style}>
                       Subscribe to email updates and be the first to know when I
                       post new content.
                     </p>
@@ -29,7 +36,7 @@ export default function Subscribe() {
               <Typography>
                 {({ style, ...restProps }) =>
                   exhausted(restProps) && (
-                    <p style={{ ...style, marginBlock: "0.5em" }}>
+                    <p style={style}>
                       <Highlight as="muted">
                         I hate spam as much as you do.
                         <br />

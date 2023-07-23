@@ -66,6 +66,8 @@ export default forwardRef<HTMLInputElement, Props>(function TextInput(
                             margin: 0,
                             padding: "0.5em 0.75em",
                             borderRadius: "0.25em",
+                            width: "100%",
+                            cursor: disabled ? "not-allowed" : "default",
                             ...surfaceStyle,
                             ...typographyStyle,
                             ...highlightStyle,
