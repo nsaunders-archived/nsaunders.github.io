@@ -3,6 +3,12 @@ import PageBlock from "@/components/PageBlock";
 import exhausted from "@/utils/exhausted";
 import Heading from "@/components/Heading";
 import PostListItem from "@/components/PostListItem";
+import * as meta from "@/meta";
+
+export const metadata = {
+  title: `Blog — ${meta.title}`,
+  description: meta.description,
+};
 
 export default async function Blog() {
   const posts = await Posts.listWithDetails();
