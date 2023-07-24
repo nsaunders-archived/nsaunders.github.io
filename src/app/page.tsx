@@ -5,6 +5,12 @@ import PostListItem from "@/components/PostListItem";
 import Typography from "@/components/Typography";
 import * as Posts from "@/data/Posts";
 import exhausted from "@/utils/exhausted";
+import * as meta from "@/meta";
+
+export const metadata = {
+  title: `Nick Saunders — ${meta.title}`,
+  description: meta.description,
+};
 
 export default async function Home() {
   const latestPost = await Posts.getByLatest();

@@ -5,6 +5,12 @@ import Markdown from "@/components/Markdown";
 import Image from "next/image";
 import portrait from "./me.jpg";
 import Heading from "@/components/Heading";
+import * as meta from "@/meta";
+
+export const metadata = {
+  title: `About — ${meta.title}`,
+  description: "Overview of Nick Saunders' programming journey",
+};
 
 export default async function Page() {
   const page = await PageData.getByName("about");

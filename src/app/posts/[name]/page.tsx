@@ -1,5 +1,6 @@
-import * as Post from "@/data/Post";
+import { Metadata } from "next";
 import { resolveURL } from "ufo";
+import * as Post from "@/data/Post";
 import Markdown from "@/components/Markdown";
 import Article from "@/components/Article";
 import Heading from "@/components/Heading";
@@ -26,6 +27,16 @@ type Props = {
 export async function generateStaticParams() {
   const posts = await Posts.list();
   return posts.map(({ name }) => name);
+}
+
+export async function generateMetadata({
+  params: { name },
+}: Props): Promise<Metadata> {
+  const { title, description } = await Post.getByName(name);
+  return {
+    title: `${title} — ${meta.title}`,
+    description,
+  };
 }
 
 export default async function Page({ params: { name } }: Props) {
