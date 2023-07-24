@@ -5,7 +5,7 @@ import fs from "fs/promises";
 import path from "path";
 import RSS from "rss";
 import * as Posts from "../../data/Posts";
-import * as meta from "@/meta";
+import * as meta from "../../meta";
 
 async function main() {
   const rss = new RSS({
