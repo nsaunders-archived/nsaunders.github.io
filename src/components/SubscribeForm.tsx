@@ -20,7 +20,7 @@ type SubscribeResult = t.TypeOf<typeof SubscribeResult>;
 
 async function subscribe({ name, email }: { name: string; email: string }) {
   const res = await fetchJsonp(
-    `https://dev.us21.list-manage.com/subscribe/post-json?u=1961e884a06fdad7a53bc160e&id=3f29e7fcdf&f_id=00905ce1f0&NAME=${encodeURIComponent(
+    `https://dev.us21.list-manage.com/subscribe/post-json?u=1961e884a06fdad7a53bc160e&id=3f29e7fcdf&f_id=00905ce1f0&FNAME=${encodeURIComponent(
       name
     )}&EMAIL=${encodeURIComponent(email)}`,
     { jsonpCallback: "c" }
@@ -190,6 +190,7 @@ export default function Subscribe() {
             </Button>
             <div />
             <Highlight
+              style={{ textAlign: "center" }}
               as={
                 state.status.tag === "completed" ? state.status.result : "muted"
               }
