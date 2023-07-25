@@ -66,7 +66,7 @@ export default async function Page({ params: { name } }: Props) {
                     <ScreenReaderOnly>Posted date</ScreenReaderOnly>
                   </>
                 }
-                value={<FormatDate>{post.date}</FormatDate>}
+                value={<FormatDate>{post.published}</FormatDate>}
               />
               <LabelValuePair
                 label={<ClockIcon aria-hidden />}
@@ -84,10 +84,7 @@ export default async function Page({ params: { name } }: Props) {
               src ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={resolveURL(
-                    `https://media.githubusercontent.com/media/nsaunders/writing/master/posts/${name}/`,
-                    src
-                  )}
+                  src={resolveURL(post.imageBase, src)}
                   alt={alt || ""}
                   style={{ display: "block", margin: "2em auto", ...style }}
                   {...restProps}

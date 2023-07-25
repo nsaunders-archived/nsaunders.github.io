@@ -16,7 +16,7 @@ async function main() {
     image_url: `${meta.publicURL}/photo.jpg`,
   });
   const posts = await Posts.listWithDetails();
-  posts.forEach(({ name, title, description, date }) => {
+  posts.forEach(({ name, title, description, published: date }) => {
     rss.item({
       title,
       description,

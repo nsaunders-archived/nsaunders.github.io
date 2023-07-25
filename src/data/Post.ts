@@ -9,7 +9,7 @@ const Post = t.type({
   data: t.type({
     title: t.string,
     description: t.string,
-    date: tt.date,
+    published: tt.date,
     tags: t.array(t.string),
   }),
 });
@@ -20,12 +20,13 @@ export async function getByName(name: string) {
   );
   const {
     content,
-    data: { title, date, description, tags },
+    data: { title, published, description, tags },
   } = await tPromise.decode(Post, matter(await res.text(), {}));
   return {
+    imageBase: `https://media.githubusercontent.com/media/nsaunders/writing/master/posts/${name}/`,
     name,
     title,
-    date,
+    published,
     description,
     tags,
     content,

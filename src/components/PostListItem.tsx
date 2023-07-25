@@ -13,7 +13,7 @@ export type Props = {
 };
 
 export default forwardRef<HTMLDivElement, Props>(function PostListItem(
-  { children: { name, title, date, description, readingTime } },
+  { children: { name, title, published, description, readingTime } },
   ref
 ) {
   return (
@@ -26,7 +26,7 @@ export default forwardRef<HTMLDivElement, Props>(function PostListItem(
       >
         <span>
           <Highlight as="muted">
-            <FormatDate>{date}</FormatDate>
+            <FormatDate>{published}</FormatDate>
           </Highlight>
         </span>
         <span>
