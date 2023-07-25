@@ -8,11 +8,23 @@ import useFocus from "@/hooks/useFocus";
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
+  const [animated, setAnimated] = useState(false);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      const t = setTimeout(() => {
+        setAnimated(true);
+      }, 500);
+      return () => {
+        clearTimeout(t);
+      };
+    }
+  }, [mounted]);
 
   const [focus, { onFocus, onBlur }] = useFocus();
 
@@ -60,7 +72,7 @@ export default function ThemeSwitcher() {
               ? "calc(100% - 20px)"
               : 4
             : "calc(50% - 8px)",
-          transition: "left 0.1s",
+          transition: animated ? "left 0.1s" : undefined,
         }}
       />
     </label>
