@@ -49,7 +49,7 @@ const defaultComponents: ComponentProps<typeof ReactMarkdown>["components"] = {
               ...surfaceStyle,
               marginRight: 0,
               marginLeft: 0,
-              padding: "0.02px 1em 0.02px 3em",
+              padding: "0.02px 1em 0.02px 2em",
               boxShadow: "inset 8px 0 0 0 var(--gold-500)",
             }}
             {...blockquoteRest}
