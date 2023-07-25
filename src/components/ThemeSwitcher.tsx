@@ -23,9 +23,9 @@ export default function ThemeSwitcher() {
         display: "inline-flex",
         alignItems: "center",
         background: mounted
-          ? theme === "dark"
-            ? "var(--gold-300)"
-            : "var(--purple-200)"
+          ? theme === "light"
+            ? "var(--purple-200)"
+            : "var(--gold-300)"
           : "transparent",
         color: "var(--black)",
         borderRadius: 999,
@@ -56,9 +56,9 @@ export default function ThemeSwitcher() {
           background: "var(--black)",
           borderRadius: 999,
           left: mounted
-            ? theme === "dark"
-              ? 4
-              : "calc(100% - 20px)"
+            ? theme === "light"
+              ? "calc(100% - 20px)"
+              : 4
             : "calc(50% - 8px)",
           transition: "left 0.1s",
         }}
