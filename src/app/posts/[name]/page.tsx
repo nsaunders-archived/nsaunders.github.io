@@ -24,9 +24,8 @@ type Props = {
   };
 };
 
-export async function generateStaticParams() {
-  const posts = await Posts.list();
-  return posts.map(({ name }) => name);
+export async function generateStaticParams(): Promise<Props["params"][]> {
+  return await Posts.list();
 }
 
 export async function generateMetadata({
