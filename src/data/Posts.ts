@@ -10,7 +10,8 @@ const Posts = t.array(
 
 export async function list() {
   const res = await fetch(
-    "https://api.github.com/repos/nsaunders/writing/contents/posts"
+    "https://api.github.com/repos/nsaunders/writing/contents/posts",
+    { next: { revalidate: 60 } }
   );
   return await tPromise.decode(Posts, await res.json());
 }

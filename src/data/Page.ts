@@ -3,7 +3,8 @@ import * as tPromise from "io-ts-promise";
 
 export async function getByName(name: string) {
   const res = await fetch(
-    `https://raw.githubusercontent.com/nsaunders/writing/master/pages/${name}/index.md`
+    `https://raw.githubusercontent.com/nsaunders/writing/master/pages/${name}/index.md`,
+    { next: { revalidate: 60 } }
   );
   return {
     name,

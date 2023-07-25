@@ -16,7 +16,8 @@ const Post = t.type({
 
 export async function getByName(name: string) {
   const res = await fetch(
-    `https://raw.githubusercontent.com/nsaunders/writing/master/posts/${name}/index.md`
+    `https://raw.githubusercontent.com/nsaunders/writing/master/posts/${name}/index.md`,
+    { next: { revalidate: 60 } }
   );
   const {
     content,
