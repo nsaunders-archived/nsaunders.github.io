@@ -13,6 +13,8 @@ import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-markup";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-tsx";
+import Surface from "./Surface";
+import exhausted from "@/utils/exhausted";
 
 const Heading: Exclude<
   ComponentProps<typeof ReactMarkdown>["components"],
@@ -37,6 +39,25 @@ const Heading: Exclude<
 
 const defaultComponents: ComponentProps<typeof ReactMarkdown>["components"] = {
   a: ({ node: _node, ...restProps }) => <Anchor {...restProps} />,
+  blockquote: ({ node: _node, style: blockquoteStyle, ...blockquoteRest }) => (
+    <Surface theme="black">
+      {({ style: surfaceStyle, ...surfaceRest }) =>
+        exhausted(surfaceRest) && (
+          <blockquote
+            style={{
+              ...blockquoteStyle,
+              ...surfaceStyle,
+              marginRight: 0,
+              marginLeft: 0,
+              padding: "0.02px 1em 0.02px 3em",
+              boxShadow: "inset 8px 0 0 0 var(--gold-500)",
+            }}
+            {...blockquoteRest}
+          />
+        )
+      }
+    </Surface>
+  ),
   code: ({ children, className, inline, node: _node, ...restProps }) => {
     const match = /language-(\w+)/.exec(className || "");
     if (inline || !match || match.length < 2) {
