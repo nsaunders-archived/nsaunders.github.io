@@ -1,11 +1,11 @@
 1:HL["/_next/static/media/4de1fea1a954a5b6-s.p.woff2",{"as":"font","type":"font/woff2"}]
 2:HL["/_next/static/media/714b62ada35e33dc-s.p.woff2",{"as":"font","type":"font/woff2"}]
 3:HL["/_next/static/css/1291aa11ec6e5562.css",{"as":"style"}]
-0:["DGH8RoR-374l_I4JSGh3M",[[["",{"children":["about",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L4",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/1291aa11ec6e5562.css","precedence":"next"}]],["$L5",["$","meta",null,{"name":"next-size-adjust"}]]]]]]
+0:["0jMs9pHgQzxx4pzh4Y_Ev",[[["",{"children":["about",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],"$L4",[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/1291aa11ec6e5562.css","precedence":"next"}]],["$L5",["$","meta",null,{"name":"next-size-adjust"}]]]]]]
 6:HL["/_next/static/media/45ddf432832c6b87-s.p.woff2",{"as":"font","type":"font/woff2"}]
 7:HL["/_next/static/css/94dfa6c5ab8547ad.css",{"as":"style"}]
-8:I{"id":"8150","chunks":["629:static/chunks/629-6db5053f5193a577.js","185:static/chunks/app/layout-d7eb727da1af9d8a.js"],"name":"Providers","async":false}
-9:I{"id":"1918","chunks":["629:static/chunks/629-6db5053f5193a577.js","185:static/chunks/app/layout-d7eb727da1af9d8a.js"],"name":"","async":false}
+8:I{"id":"8150","chunks":["629:static/chunks/629-6db5053f5193a577.js","185:static/chunks/app/layout-dec94b39084ffb2d.js"],"name":"Providers","async":false}
+9:I{"id":"1918","chunks":["629:static/chunks/629-6db5053f5193a577.js","185:static/chunks/app/layout-dec94b39084ffb2d.js"],"name":"","async":false}
 a:I{"id":"3211","chunks":["272:static/chunks/webpack-04afc542c7ce40a2.js","253:static/chunks/bce60fc1-296895d5f3477fb4.js","769:static/chunks/769-900de88789c933cd.js"],"name":"","async":false}
 b:I{"id":"5767","chunks":["272:static/chunks/webpack-04afc542c7ce40a2.js","253:static/chunks/bce60fc1-296895d5f3477fb4.js","769:static/chunks/769-900de88789c933cd.js"],"name":"","async":false}
 d:I{"id":"6095","chunks":["372:static/chunks/372-7a1d55271b3075cc.js","512:static/chunks/app/posts/[name]/page-2e02b0a72335c500.js"],"name":"","async":false}
