@@ -54,7 +54,7 @@ export default function ThemeSwitcher() {
         onChange={({ target: { checked } }) => {
           setTheme(checked ? "light" : "dark");
         }}
-        style={{ width: 0, height: 0 }}
+        style={{ width: 0, height: 0, opacity: 0 }}
         onFocus={onFocus}
         onBlur={onBlur}
       />
