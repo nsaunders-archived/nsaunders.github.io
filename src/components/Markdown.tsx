@@ -1,8 +1,9 @@
-import type { ComponentProps } from "react";
+import { ComponentProps, isValidElement, ReactNode } from "react";
 import cx from "clsx";
 import ReactMarkdown from "react-markdown";
 import remarkRemoveComments from "remark-remove-comments";
 import Prism from "prismjs";
+import slug from "slug";
 import Anchor from "./Anchor";
 import Code from "./Code";
 import HeadingImpl from "./Heading";
@@ -15,11 +16,39 @@ import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-tsx";
 import Surface from "./Surface";
 import exhausted from "@/utils/exhausted";
+import LinkIcon from "./LinkIcon";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function isIterable(x: any): x is Iterable<unknown> {
+  return Symbol.iterator in x;
+}
+
+function getStrings(children: ReactNode | ReactNode[]): string[] {
+  if (!children) {
+    return [];
+  }
+  if (isValidElement(children)) {
+    return getStrings(children.props.children);
+  }
+  if (typeof children === "string") {
+    return [children];
+  }
+  if (isIterable(children)) {
+    return Array.from(children).flatMap(getStrings);
+  }
+  return [];
+}
 
 const Heading: Exclude<
   ComponentProps<typeof ReactMarkdown>["components"],
   undefined
->["h1"] = function Heading({ children, level, node: _node, ...restProps }) {
+>["h1"] = function Heading({
+  children,
+  className = "",
+  level,
+  node: _node,
+  ...restProps
+}) {
   if (
     level === 1 ||
     level === 2 ||
@@ -28,8 +57,19 @@ const Heading: Exclude<
     level === 5 ||
     level === 6
   ) {
+    const headingText = getStrings(children).join(" ");
     return (
-      <HeadingImpl level={level} {...restProps}>
+      <HeadingImpl
+        id={slug(headingText)}
+        level={level}
+        className={`${className} md-heading`}
+        {...restProps}
+      >
+        <a href={`#${slug(headingText)}`} className="md-heading__anchor">
+          <div className="md-heading__anchor-icon">
+            <LinkIcon size={20} />
+          </div>
+        </a>
         {children}
       </HeadingImpl>
     );

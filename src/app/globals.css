@@ -343,3 +343,21 @@ body {
 .detect-active:not(:active) {
   animation: not-active 0 linear;
 }
+
+/* markdown */
+
+.md-heading__anchor {
+  float: left;
+  margin-left: -28px;
+  padding-right: 8px;
+  color: currentColor;
+}
+
+.md-heading__anchor-icon {
+  visibility: hidden;
+  width: 20px;
+}
+
+.md-heading:hover .md-heading__anchor-icon {
+  visibility: visible;
+}

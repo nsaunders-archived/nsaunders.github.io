@@ -20,7 +20,7 @@ export default forwardRef<HTMLDivElement, O.Omit<Props, "ref">>(
       style: {
         margin: "0 auto",
         width:
-          "calc(100vw - (var(--desktop) * 64px + var(--mobile) * 32px) * 2)",
+          "calc(100vw - (var(--desktop) * 64px + var(--mobile) * 48px) * 2)",
         maxWidth: 832,
         boxSizing: "border-box",
         ...style,
