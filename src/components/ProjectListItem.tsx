@@ -5,6 +5,7 @@ import type * as Projects from "@/data/Projects";
 import { ReactNode } from "react";
 import StarIcon from "./StarIcon";
 import ForkIcon from "./ForkIcon";
+import Surface from "./Surface";
 
 function ProjectListItemDetail({ children }: { children: ReactNode }) {
   return (
@@ -16,9 +17,8 @@ function ProjectListItemDetail({ children }: { children: ReactNode }) {
 
 export type Props = Awaited<ReturnType<(typeof Projects)["list"]>>[number];
 
-export default function ProjectListItemContent({
+function ProjectListItemContent({
   url,
-  owner,
   name,
   description,
   language,
@@ -76,5 +76,19 @@ export default function ProjectListItemContent({
         )}
       </div>
     </div>
+  );
+}
+
+export default function ProjectListItem(props: Props) {
+  return (
+    <Surface theme="dark-gray">
+      {({ style, ...restProps }) =>
+        exhausted(restProps) && (
+          <div style={{ ...style, padding: "1.25em 1.5em" }}>
+            <ProjectListItemContent {...props} />
+          </div>
+        )
+      }
+    </Surface>
   );
 }

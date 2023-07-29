@@ -3,8 +3,7 @@ import PageBlock from "@/components/PageBlock";
 import exhausted from "@/utils/exhausted";
 import Heading from "@/components/Heading";
 import * as meta from "@/meta";
-import ProjectListItemContent from "@/components/ProjectListItemContent";
-import Surface from "@/components/Surface";
+import ProjectListItem from "@/components/ProjectListItem";
 
 export const metadata = {
   title: `Projects — ${meta.title}`,
@@ -35,15 +34,7 @@ export default async function Projects() {
             >
               {projects.map((project) => (
                 <li key={project.name} style={{ display: "contents" }}>
-                  <Surface theme="dark-gray">
-                    {({ style, ...restProps }) =>
-                      exhausted(restProps) && (
-                        <div style={{ ...style, padding: "1em" }}>
-                          <ProjectListItemContent {...project} />
-                        </div>
-                      )
-                    }
-                  </Surface>
+                  <ProjectListItem {...project} />
                 </li>
               ))}
             </ul>
