@@ -29,6 +29,7 @@ export default forwardRef<HTMLDivElement, O.Omit<Props, "ref">>(
     const staticPrefix = staticProp ? "static-" : "";
     const forwardProps: ForwardProps = {
       style: {
+        boxSizing: "border-box",
         background: "var(--bg)",
         color: "var(--fg)",
         "--bg": `var(--${staticPrefix}${
