@@ -30,8 +30,7 @@ export async function list() {
         parseInt($(this).find("a[href$='forks']").text().trim()) || 0;
       return {
         url: `https://github.com/${owner}/${name}`,
-        owner:
-          owner === username ? { tag: "self" } : { tag: "other", name: owner },
+        owner,
         name,
         description,
         language: { name: languageName, color: languageColor },
@@ -40,4 +39,9 @@ export async function list() {
       };
     })
     .toArray();
+}
+
+export async function getFeatured() {
+  const [featured] = await list();
+  return featured;
 }

@@ -4,6 +4,7 @@ import PostListItem from "@/components/PostListItem";
 import Typography from "@/components/Typography";
 import * as Posts from "@/data/Posts";
 import * as Projects from "@/data/Projects";
+import * as Project from "@/data/Project";
 import exhausted from "@/utils/exhausted";
 import * as meta from "@/meta";
 import ProjectListItem from "@/components/ProjectListItem";
@@ -18,7 +19,11 @@ export const metadata = {
 
 export default async function Home() {
   const latestPost = await Posts.getByLatest();
-  const [featuredProject] = await Projects.list();
+  const featuredProject = await Projects.getFeatured();
+  const projectSummary = await Project.getSummary(
+    featuredProject.name,
+    featuredProject.owner
+  );
   return (
     <main>
       <Article
@@ -107,14 +112,7 @@ export default async function Home() {
                   <ProjectListItem {...featuredProject} />
                 </div>
                 <Paragraph style={{ margin: 0, flex: 1, minWidth: "30ch" }}>
-                  With Tecton, you can confidently author CSS using a
-                  statically-typed language, protecting you from a wide range of
-                  CSS errors—some rather obscure. I built Tecton after finding
-                  other statically-typed CSS solutions to be cumbersome and
-                  outdated, limited to subsets of CSS that would not meet the
-                  needs of most real-world projects. On the other hand, Tecton
-                  uses advanced features of PureScript to deliver a familiar yet
-                  safe CSS authoring experience.
+                  {projectSummary}
                 </Paragraph>
               </Surface>
               <LinkAnchor href="/projects">

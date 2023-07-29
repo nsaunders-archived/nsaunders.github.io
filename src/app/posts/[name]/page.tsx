@@ -85,7 +85,12 @@ export default async function Page({ params: { name } }: Props) {
                 <img
                   src={resolveURL(post.imageBase, src)}
                   alt={alt || ""}
-                  style={{ display: "block", margin: "2em auto", ...style }}
+                  style={{
+                    display: "block",
+                    margin: "2em auto",
+                    maxWidth: "100%",
+                    ...style,
+                  }}
                   {...restProps}
                 />
               ) : (
