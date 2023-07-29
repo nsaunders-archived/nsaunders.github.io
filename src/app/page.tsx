@@ -1,5 +1,4 @@
 import Article from "@/components/Article";
-import Heading from "@/components/Heading";
 import Highlight from "@/components/Highlight";
 import PostListItem from "@/components/PostListItem";
 import Typography from "@/components/Typography";
