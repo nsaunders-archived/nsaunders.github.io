@@ -8,6 +8,7 @@ import Anchor from "./Anchor";
 
 const links = [
   { href: "/posts", title: "Blog" },
+  { href: "/projects", title: "Projects" },
   { href: "/about", title: "About" },
 ];
 

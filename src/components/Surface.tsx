@@ -55,6 +55,12 @@ export default forwardRef<HTMLDivElement, O.Omit<Props, "ref">>(
         "--fg-error": `var(--${staticPrefix}red-${
           theme === "white" || theme === "light-gray" ? 6 : 3
         }00)`,
+        "--fg-link": `var(--${staticPrefix}blue-${
+          theme === "dark-gray" ? 3 : 4
+        }00)`,
+        "--fg-link-bright": `var(--${staticPrefix}blue-${
+          theme === "dark-gray" ? 2 : 3
+        }00)`,
         ...style,
       },
     };

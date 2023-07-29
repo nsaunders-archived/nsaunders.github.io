@@ -7,7 +7,7 @@
   --desktop: 0;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 640px) {
   :root {
     --mobile: 0;
     --desktop: 1;

@@ -18,6 +18,7 @@
     "@types/rss": "^0.0.30",
     "@types/slug": "^5.0.3",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "cheerio": "^1.0.0-rc.12",
     "clsx": "^1.2.1",
     "date-fns": "^2.30.0",
     "eslint": "8.44.0",

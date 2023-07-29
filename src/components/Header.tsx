@@ -2,6 +2,7 @@
 
 import exhausted from "@/utils/exhausted";
 import { Montserrat } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Anchor from "./Anchor";
@@ -52,7 +53,10 @@ export default function Header() {
                 onBlur={onBlur}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                style={{ ...style, display: "inline-flex" }}
+                style={{
+                  ...style,
+                  display: "inline-flex",
+                }}
                 tabIndex={tabIndex}
               >
                 <span
@@ -63,7 +67,13 @@ export default function Header() {
                   }}
                   aria-hidden="true"
                 >
-                  NS
+                  <Image
+                    src="/icon"
+                    alt=""
+                    aria-hidden="true"
+                    width={24}
+                    height={24}
+                  />
                 </span>
                 <span
                   style={{

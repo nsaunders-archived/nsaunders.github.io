@@ -53,7 +53,7 @@ export default forwardRef<HTMLAnchorElement, O.Omit<Props, "ref">>(
         outlineColor: "transparent",
         outlineWidth: 2,
         outlineStyle: "dotted",
-        color: hover ? "var(--blue-300)" : "var(--blue-400)",
+        color: hover ? "var(--fg-link-bright)" : "var(--fg-link)",
         boxShadow:
           focus && !disabled
             ? "0 0 0 2px var(--bg), 0 0 0 4px var(--blue-500)"

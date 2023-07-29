@@ -7,7 +7,8 @@ export type Props = {
 };
 
 export default function withIconContainer(
-  Component: ComponentType<unknown>
+  Component: ComponentType<unknown>,
+  viewBox = 24
 ): ComponentType<Props> {
   return function IconContainer({
     size = 16,
@@ -23,7 +24,7 @@ export default function withIconContainer(
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
-        viewBox="0 0 24 24"
+        viewBox={`0 0 ${viewBox} ${viewBox}`}
         aria-hidden={restProps["aria-hidden"]}
       >
         <Component />

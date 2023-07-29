@@ -8,5 +8,7 @@ declare module "react" {
     "--fg-bright"?: CSS.Property.Color;
     "--fg-success"?: CSS.Property.Color;
     "--fg-error"?: CSS.Property.Color;
+    "--fg-link"?: CSS.Property.Color;
+    "--fg-link-bright"?: CSS.Property.Color;
   }
 }
