@@ -29,8 +29,8 @@ export default forwardRef<HTMLElement, O.Omit<Props, "ref">>(function Code(
 ) {
   return (
     <Highlight as="bright">
-      {({ style: highlightStyle, ...restProps }) => {
-        exhausted(restProps);
+      {({ style: highlightStyle, ...highlightRest }) => {
+        exhausted(highlightRest);
 
         const forwardProps: ForwardProps = {
           className: cx(className, inconsolata.className),
