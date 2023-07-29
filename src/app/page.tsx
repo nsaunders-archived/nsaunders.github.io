@@ -109,7 +109,7 @@ export default async function Home() {
                 }}
               >
                 <div style={{ display: "grid" }}>
-                  <ProjectListItem {...featuredProject} />
+                  <ProjectListItem>{featuredProject}</ProjectListItem>
                 </div>
                 <Paragraph style={{ margin: 0, flex: 1, minWidth: "30ch" }}>
                   {projectSummary}

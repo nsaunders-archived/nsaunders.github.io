@@ -34,7 +34,7 @@ export default async function Projects() {
             >
               {projects.map((project) => (
                 <li key={project.name} style={{ display: "contents" }}>
-                  <ProjectListItem {...project} />
+                  <ProjectListItem>{project}</ProjectListItem>
                 </li>
               ))}
             </ul>

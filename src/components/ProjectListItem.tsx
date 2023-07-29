@@ -15,15 +15,12 @@ function ProjectListItemDetail({ children }: { children: ReactNode }) {
   );
 }
 
-export type Props = Awaited<ReturnType<(typeof Projects)["list"]>>[number];
+export type Props = {
+  children: Awaited<ReturnType<(typeof Projects)["list"]>>[number];
+};
 
 function ProjectListItemContent({
-  url,
-  name,
-  description,
-  language,
-  stars,
-  forks,
+  children: { url, name, description, language, stars, forks },
 }: Props) {
   return (
     <div
