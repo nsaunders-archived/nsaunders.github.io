@@ -116,7 +116,7 @@ export default async function Home() {
                 </Paragraph>
               </Surface>
               <LinkAnchor href="/projects">
-                See more of my projects&hellip;
+                See more of my work&hellip;
               </LinkAnchor>
             </section>
           )}
