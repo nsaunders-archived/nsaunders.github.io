@@ -2,7 +2,6 @@ import { list } from "@/data/Projects";
 import PageBlock from "@/components/PageBlock";
 import exhausted from "@/utils/exhausted";
 import Heading from "@/components/Heading";
-import PostListItem from "@/components/PostListItem";
 import * as meta from "@/meta";
 import ProjectListItemContent from "@/components/ProjectListItemContent";
 import Surface from "@/components/Surface";
