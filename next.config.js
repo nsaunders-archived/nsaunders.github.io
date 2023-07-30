@@ -1,8 +1,8 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  output: "export",
+  ...(process.env.DYNAMIC ? undefined : { output: "export" }),
   images: {
-    unoptimized: true,
+    unoptimized: !process.env.DYNAMIC,
     remotePatterns: [
       { protocol: "https", hostname: "media.githubusercontent.com" },
     ],
