@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/server";
-import fs from "fs/promises";
 import * as Post from "@/data/Post";
+import fs from "fs/promises";
+import http from "http";
 
 // Route segment config
 export const runtime = "nodejs";
@@ -12,6 +13,26 @@ export const size = {
 };
 
 export const contentType = "image/png";
+
+async function getFont(): Promise<Buffer> {
+  const url = process.env.APP_URL;
+  if (!url) {
+    return await fs.readFile(
+      "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff"
+    );
+  }
+  return new Promise((resolve, reject) => {
+    http
+      .get(`${url}/fonts/lato-latin-400-normal.woff`, (res) => {
+        const chunks: any[] = [];
+        res.on("data", (c) => chunks.push(c));
+        res.on("end", () => resolve(Buffer.concat(chunks)));
+      })
+      .on("error", (err) => {
+        reject(err);
+      });
+  });
+}
 
 export default async function Image({
   params: { name },
@@ -68,9 +89,7 @@ export default async function Image({
       fonts: [
         {
           name: "Lato",
-          data: await fs.readFile(
-            "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff"
-          ),
+          data: await getFont(),
           weight: 400,
           style: "normal",
         },
