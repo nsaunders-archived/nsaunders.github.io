@@ -4,7 +4,7 @@ import fs from "fs/promises";
 import http from "http";
 
 // Route segment config
-export const runtime = "nodejs";
+export const runtime = process.env.VERCEL ? "edge" : "nodejs";
 
 // Image metadata
 export const size = {
@@ -14,24 +14,15 @@ export const size = {
 
 export const contentType = "image/png";
 
-async function getFont(): Promise<Buffer> {
-  const url = process.env.VERCEL_URL;
-  if (!url) {
-    return await fs.readFile(
-      "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff"
-    );
+async function getFont(): Promise<ArrayBuffer> {
+  if (process.env.VERCEL) {
+    return await fetch(
+      `https://${process.env.VERCEL_URL}/lato-latin-400-normal.woff`
+    ).then((res) => res.arrayBuffer());
   }
-  return new Promise((resolve, reject) => {
-    http
-      .get(`http://${url}/lato-latin-400-normal.woff2`, (res) => {
-        const chunks: any[] = [];
-        res.on("data", (c) => chunks.push(c));
-        res.on("end", () => resolve(Buffer.concat(chunks)));
-      })
-      .on("error", (err) => {
-        reject(err);
-      });
-  });
+  return await fs.readFile(
+    "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff"
+  );
 }
 
 export default async function Image({
