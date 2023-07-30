@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/server";
 import * as Post from "@/data/Post";
 import fs from "fs/promises";
-import http from "http";
 
 // Route segment config
 export const runtime = process.env.VERCEL ? "edge" : "nodejs";
