@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cp node_modules/@fontsource/lato/files/lato-latin-400-normal.woff public && ts-node -P tsconfig.scripts.json src/scripts/rss && next build",
+    "build": "cp node_modules/@fontsource/lato/files/lato-latin-400-normal.woff2 public && ts-node -P tsconfig.scripts.json src/scripts/rss && next build",
     "start": "next start",
     "lint": "next lint"
   },

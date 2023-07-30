@@ -23,7 +23,7 @@ async function getFont(): Promise<Buffer> {
   }
   return new Promise((resolve, reject) => {
     http
-      .get(`http://${url}/lato-latin-400-normal.woff`, (res) => {
+      .get(`http://${url}/lato-latin-400-normal.woff2`, (res) => {
         const chunks: any[] = [];
         res.on("data", (c) => chunks.push(c));
         res.on("end", () => resolve(Buffer.concat(chunks)));
