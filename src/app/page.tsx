@@ -77,9 +77,7 @@ export default async function Home() {
               >
                 <PostListItem>{latestPost}</PostListItem>
               </Surface>
-              <LinkAnchor href="/projects">
-                See more of my posts&hellip;
-              </LinkAnchor>
+              <LinkAnchor href="/projects">View more&hellip;</LinkAnchor>
             </section>
           )}
           <Surface theme="dark-gray">
@@ -115,9 +113,7 @@ export default async function Home() {
                   {projectSummary}
                 </Paragraph>
               </Surface>
-              <LinkAnchor href="/projects">
-                See more of my work&hellip;
-              </LinkAnchor>
+              <LinkAnchor href="/projects">View more&hellip;</LinkAnchor>
             </section>
           )}
         </div>
