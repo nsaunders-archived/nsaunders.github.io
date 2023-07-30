@@ -15,7 +15,7 @@ export const size = {
 export const contentType = "image/png";
 
 async function getFont(): Promise<Buffer> {
-  const url = process.env.APP_URL;
+  const url = process.env.VERCEL_URL;
   if (!url) {
     return await fs.readFile(
       "node_modules/@fontsource/lato/files/lato-latin-400-normal.woff"
