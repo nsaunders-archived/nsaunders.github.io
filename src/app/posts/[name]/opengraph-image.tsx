@@ -13,13 +13,13 @@ export const size = {
 
 export const contentType = "image/png";
 
-// Image generation
-export default async function OpengraphImage({
+export default async function Image({
   params: { name },
 }: {
   params: { name: string };
 }) {
   const { title, description } = await Post.getByName(name);
+
   return new ImageResponse(
     (
       <div

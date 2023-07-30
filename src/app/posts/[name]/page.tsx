@@ -33,6 +33,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const { title, description } = await Post.getByName(name);
   return {
+    metadataBase: new URL(meta.publicURL),
     title: `${title} — ${meta.title}`,
     description,
   };
