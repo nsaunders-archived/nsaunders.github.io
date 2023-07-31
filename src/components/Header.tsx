@@ -15,11 +15,11 @@ export default function Header() {
   return (
     <header
       style={{
-        width: "100%",
+        width: "100vw",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: 16,
+        padding: `16px 24px 16px 16px`,
         boxSizing: "border-box",
       }}
     >
