@@ -31,9 +31,7 @@ export async function generateStaticParams(): Promise<Props["params"][]> {
 export async function generateMetadata({
   params: { name },
 }: Props): Promise<Metadata> {
-  const post = await Post.getByName(name);
-  const title = `${post.title} — ${meta.title}`;
-  const { description } = post;
+  const { title, description } = await Post.getByName(name);
   return {
     metadataBase: new URL(meta.publicURL),
     title: `${title} — ${meta.title}`,
@@ -44,7 +42,6 @@ export async function generateMetadata({
       type: "article",
     },
     twitter: {
-      title: post.title,
       card: "summary_large_image",
     },
   };
