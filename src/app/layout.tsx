@@ -8,7 +8,12 @@ import Surface from "@/components/Surface";
 import exhausted from "@/utils/exhausted";
 import { title, description } from "@/meta";
 
-const lato = Lato({ subsets: ["latin"], weight: "400" });
+const lato = Lato({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = { title, description };
 
