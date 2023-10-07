@@ -106,10 +106,22 @@ export default async function Home() {
                   padding: "1.5em",
                 }}
               >
-                <div style={{ display: "grid" }}>
+                <div
+                  style={{
+                    display: "grid",
+                    flexBasis: "calc((60ch - 100%) * 999)",
+                    flexGrow: 1,
+                  }}
+                >
                   <ProjectListItem>{featuredProject}</ProjectListItem>
                 </div>
-                <Paragraph style={{ margin: 0, flex: 1, minWidth: "30ch" }}>
+                <Paragraph
+                  style={{
+                    margin: 0,
+                    flexBasis: "calc((60ch - 100%) * 999)",
+                    flexGrow: 1,
+                  }}
+                >
                   {projectSummary}
                 </Paragraph>
               </Surface>
