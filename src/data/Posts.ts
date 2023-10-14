@@ -18,10 +18,18 @@ export async function list() {
 
 export async function listWithDetails() {
   const posts = await list();
-  const postsWithDetails = await Promise.all(
+  let postsWithDetails = await Promise.all(
     posts.map(({ name }) => Post.getByName(name))
   );
-  return postsWithDetails.sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
+  if (process.env.NODE_ENV !== "development") {
+    const now = new Date();
+    postsWithDetails = postsWithDetails.filter(
+      ({ published }) => published < now
+    );
+  }
+  return postsWithDetails.sort((a, b) =>
+    a.published < b.published ? 1 : a.published > b.published ? -1 : 0
+  );
 }
 
 export async function getByLatest() {
