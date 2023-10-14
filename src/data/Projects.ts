@@ -3,7 +3,9 @@ import * as cheerio from "cheerio";
 const username = "nsaunders";
 
 export async function list() {
-  const res = await fetch(`https://github.com/${username}`);
+  const res = await fetch(`https://github.com/${username}`, {
+    next: { revalidate: 900 },
+  });
   if (!res.ok) {
     throw new Error(`Unexpected ${res.status} response: ${res.statusText}`);
   }
