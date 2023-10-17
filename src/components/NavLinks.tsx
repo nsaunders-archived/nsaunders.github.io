@@ -22,27 +22,9 @@ export default function NavLinks() {
             selected={pathname?.startsWith(href)}
             disabled={pathname === href}
           >
-            {({
-              style,
-              onBlur,
-              onClick,
-              onFocus,
-              onMouseEnter,
-              onMouseLeave,
-              tabIndex,
-              ...restProps
-            }) =>
+            {({ style, tabIndex, ...restProps }) =>
               exhausted(restProps) && (
-                <Link
-                  href={href}
-                  style={style}
-                  onBlurCapture={onBlur}
-                  onClick={onClick}
-                  onFocus={onFocus}
-                  onMouseEnter={onMouseEnter}
-                  onMouseLeave={onMouseLeave}
-                  tabIndex={tabIndex}
-                >
+                <Link href={href} style={style} tabIndex={tabIndex}>
                   {title}
                 </Link>
               )

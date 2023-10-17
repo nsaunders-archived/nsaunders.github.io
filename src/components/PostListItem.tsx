@@ -19,7 +19,12 @@ export default forwardRef<HTMLDivElement, Props>(function PostListItem(
   return (
     <div
       ref={ref}
-      style={{ display: "flex", flexDirection: "column", gap: "0.5em" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: "0.5em",
+      }}
     >
       <div
         style={{

@@ -35,24 +35,10 @@ export default function Header() {
         }}
       >
         <Anchor selected disabled={usePathname() === "/"}>
-          {({
-            onClick,
-            onFocus,
-            onBlur,
-            onMouseEnter,
-            onMouseLeave,
-            style,
-            tabIndex,
-            ...restProps
-          }) =>
+          {({ style, tabIndex, ...restProps }) =>
             exhausted(restProps) && (
               <Link
                 href="/"
-                onClick={onClick}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
                 style={{
                   ...style,
                   display: "inline-flex",

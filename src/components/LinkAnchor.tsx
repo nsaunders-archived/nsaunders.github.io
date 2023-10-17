@@ -17,9 +17,9 @@ export default function LinkAnchor({
   prefetch,
   locale,
   legacyBehavior,
-  onMouseEnter: linkOnMouseEnter,
+  onMouseEnter,
   onTouchStart,
-  onClick: linkOnClick,
+  onClick,
   children,
   style: linkStyle,
   ...restProps
@@ -27,29 +27,11 @@ export default function LinkAnchor({
   return (
     exhausted(restProps) && (
       <Anchor>
-        {({
-          onClick: anchorOnClick,
-          onFocus,
-          onBlur,
-          onMouseEnter: anchorOnMouseEnter,
-          onMouseLeave,
-          style: anchorStyle,
-          tabIndex,
-          ...restProps
-        }) =>
+        {({ style: anchorStyle, tabIndex, ...restProps }) =>
           exhausted(restProps) && (
             <Link
-              onClick={(e) => {
-                linkOnClick?.(e);
-                anchorOnClick?.(e);
-              }}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              onMouseEnter={(e) => {
-                linkOnMouseEnter?.(e);
-                anchorOnMouseEnter?.();
-              }}
-              onMouseLeave={onMouseLeave}
+              onClick={onClick}
+              onMouseEnter={onMouseEnter}
               style={{ ...anchorStyle, ...linkStyle }}
               tabIndex={tabIndex}
               href={href}
